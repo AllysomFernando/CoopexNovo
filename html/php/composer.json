@@ -1,0 +1,21 @@
+{
+    "name": "kriansa/openboleto",
+    "type": "library",
+    "description": "Biblioteca para geração de boletos bancários.",
+    "keywords": ["boleto", "boleto bancario"],
+    "homepage": "http://github.com/kriansa/openboleto",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Garajau",
+            "email": "kriansa@facebook.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+		"openboleto/openboleto": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"OpenBoleto\\": "src/"}
+    }
+}

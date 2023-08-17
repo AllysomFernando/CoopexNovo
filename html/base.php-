@@ -1,0 +1,23 @@
+<?php 
+
+	require_once("php/config.php");
+    require_once("php/mysql.php");
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    $sql = "SELECT
+                image
+            FROM
+                user_images";
+    $avatar = $fagid360->query($sql);
+
+    if($avatar->rowCount()){
+        while($row = $avatar->fetch(PDO::FETCH_OBJ)){
+            echo "<img width='300' src='data:image/png;base64,$row->image'>";
+        }
+    }
+
+?>
+

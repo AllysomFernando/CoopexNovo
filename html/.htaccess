@@ -1,0 +1,28 @@
+RewriteEngine on
+DirectoryIndex login.php
+
+php_value short_open_tag 1
+
+RewriteRule ^boleto/reoferta/prematricula/([0-9]*)$ php/registro_bradesco/reoferta_pre_matricula.php?id=$1 [L]
+RewriteRule ^boleto/reoferta/matricula/([0-9]*)$ php/registro_bradesco/reoferta_matricula.php?id=$1 [L]
+
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)$ coopex.php?modulo=$1&arquivo=$2 [L]
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)$ coopex.php?modulo=$1&arquivo=$2&id=$3 [L]
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)$ coopex.php?modulo=$1&diretorio=$2&arquivo=$3 [L]
+
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)$ coopex.php?modulo=$1&diretorio=$2&arquivo=$3&id=$4 [L]
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)/([0-9]*)$ coopex.php?modulo=$1&diretorio=$2&arquivo=$3&id=$4&p1=$5 [L]
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)$ coopex.php?modulo=$1&diretorio=$2&diretorio2=$3&arquivo=$4 [L]
+
+
+RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)$ coopex.php?modulo=$1&diretorio=$2&diretorio2=$3&arquivo=$4&id=$5 [L]
+#RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)/([0-9]*)$ coopex.php?modulo=$1&diretorio=$2&arquivo=$3&id=$4&p1=$5 [L]
+#RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)/([a-z_0-9]*)$ coopex.php?modulo=$1&diretorio=$2&diretorio2=$3&arquivo=$4 [L]
+
+RewriteRule ^login2$ login2.php [L]
+
+RewriteRule ^home$ coopex.php [L]
+RewriteRule ^home2$ coopex2.php [L]
+RewriteRule ^home3$ coopex3.php [L]
+RewriteRule ^logout$ logout.php [L]
+RewriteRule ^bloqueio$ locked.php [L]

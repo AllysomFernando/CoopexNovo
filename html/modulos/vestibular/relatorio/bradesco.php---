@@ -1,0 +1,274 @@
+<link rel="stylesheet" media="screen, print" href="css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+<main id="js-page-content" role="main" class="page-content naoimprimir">
+	<ol class="breadcrumb page-breadcrumb">
+		<li class="breadcrumb-item"><a href="javascript:void(0);">Financeiro</a></li>
+		<li class="breadcrumb-item">Relatórios</li>
+		<li class="breadcrumb-item active">Boletos Pagos Bradesco</li>
+		<li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+	</ol>
+	<div class="subheader">
+		<h1 class="subheader-title">
+			<i class='subheader-icon fal fa-credit-card-front'></i> BOLETOS PAGOS BRADESCO<sup class='badge badge-primary fw-500'>NOVO</sup>
+			<small>
+				Relatório de baixas do arquivo de retorno do Bradesco
+			</small>
+		</h1>
+	</div>
+	
+	<div class="row">
+		<div class="col-xl-12">
+			<div id="panel-1" class="panel">
+				<div class="panel-hdr">
+					<h2>
+						Período
+					</h2>
+					<div class="panel-toolbar">
+						<button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+						<button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+					</div>
+				</div>
+				<div class="panel-container show">
+					<div class="panel-content">
+						<div class="panel-tag">
+							Clique na data inicial e na data final para selecionar o período, clique sobre a data duas vezes para selecionar uma única data
+						</div>
+
+						<form class="form-group row" method="post" action="" >
+							<div class="col-4">
+								<label class="col-form-label form-label">Selecione o período</label>
+								<div class="input-group">
+									<input name="intervalo" type="text" class="form-control" placeholder="Selecionar data" id="datepicker-2">
+									<div class="input-group-append">
+										<span class="input-group-text fs-xl">
+											<i class="fal fa-calendar"></i>
+										</span>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary waves-effect waves-themed mt-5">Gerar Relatório</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php 
+		error_reporting(E_ALL);	
+		ini_set('display_errors', 1);
+	
+		if(isset($_POST['intervalo'])){
+
+			$aux = explode(" - ", $_POST['intervalo']);
+			if(count($aux)){
+				$data_inicio = converterData($aux[0]);
+				$data_fim = converterData($aux[1]);
+			} else {
+				$data_inicio = converterData($aux[0]);
+				$data_fim = converterData($aux[0]);
+			}
+	?>
+	<script>
+		window.location = (""+window.location).replace(/#[A-Za-z0-9_]*$/,'')+"#relatorio";
+	</script>
+	<a id="relatorio" name="relatorio" href="relatorio"></a>
+	<div class="row">
+		<div class="col-xl-12">
+			<div id="panel-1" class="panel">
+				<div class="panel-hdr">
+					<h2>Período selecionado: <span class="fw-300"><i><?php echo $_POST['intervalo']?></i></span></h2>
+					<div class="panel-toolbar">
+						<button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+						<button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+					</div>
+				</div>
+				<?php
+					$sql = "SELECT
+									evento,
+									nosso_numero,
+									data_pagamento,
+									valor_pago,
+									nome,
+									id_inscricao  
+								FROM
+									coopex_usuario.evento_projeto
+									INNER JOIN coopex_usuario.evento_inscricao USING ( id_evento )
+									INNER JOIN coopex_usuario.evento_pessoa USING ( id_pessoa )
+									INNER JOIN coopex_usuario.evento_inscricao_boleto_pagamento USING ( id_inscricao ) 
+								WHERE
+									evento_inscricao_boleto_pagamento.data_pagamento BETWEEN '$data_inicio' AND '$data_fim'
+									ORDER BY
+	evento_inscricao_boleto_pagamento.data_pagamento";
+					$aux_boleto = $coopex->prepare($sql);
+					$aux_boleto->execute();
+					$boleto_total = 0;
+				?>
+				<div class="panel-container show">
+					<div class="panel-content">
+						<!-- datatable start -->
+						<table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+							<thead class="bg-primary-600">
+								<tr>
+									<th>Tipo</th>
+									<th>ID</th>
+									<th>Nome</th>
+									<th>Boleto</th>
+									<th>Pagamento</th>
+									<th>Valor</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?
+								while($nap_boleto = $aux_boleto->fetch(PDO::FETCH_OBJ)){
+								$boleto_total +=$nap_boleto->valor_pago; 
+								
+								if($nap_boleto->evento == "EVTB"){
+									$tipo = "Evento";
+								} else if($nap_boleto->evento == "REMB"){
+									$tipo = "Reoferta Matrícula";
+								} else if($nap_boleto->evento == "REPB"){
+									$tipo = "Reoferta Pré-matrícula";
+								}
+									
+							?>
+								<tr>
+									<td><?php echo $tipo?></td>
+									<td><?php echo $nap_boleto->evento."-".$nap_boleto->id_inscricao?></td>
+									<td><?php echo utf8_encode($nap_boleto->nome)?></td>
+									<td><?php echo $nap_boleto->nosso_numero?></td>
+									<td><?php echo converterData($nap_boleto->data_pagamento)?></td>
+									<td align="right"><?php echo number_format($nap_boleto->valor_pago, 2, ',', '.')?></td>
+								</tr>
+							<?
+							}
+							?>
+								
+								
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th>Total</th>
+									<th class="text-right"><strong><?php echo isset($boleto_total) ? number_format($boleto_total, 2, ',', '.') : "0,00"?></strong></th>
+								</tr>
+							</tfoot>
+
+						</table>
+						<!-- datatable end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<link rel="stylesheet" media="screen, print" href="css/datagrid/datatables/datatables.bundle.css">
+      
+	<script src="js/datagrid/datatables/datatables.bundle.js"></script>
+	<script src="js/datagrid/datatables/datatables.export.js"></script>
+	<script>
+	// initialize datatable
+		$('#dt-basic-example').dataTable({
+			responsive: true,
+			lengthChange: true,
+			dom:
+				"<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+				"<'row'<'col-sm-12'tr>>" +
+				"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+			buttons: [
+				{
+					extend: 'pdfHtml5',
+					text: 'PDF',
+					titleAttr: 'Gerar PDF',
+					className: 'btn-outline-danger btn-sm mr-1 ml-3',
+					title: 'BOLETOS PAGOS BRADESCO',
+					messageTop: 'Período: <?php echo $_POST['intervalo']?>',
+					filename: 'asdfasdf'
+				},
+				{
+					extend: 'excelHtml5',
+					text: 'Excel',
+					titleAttr: 'Gerar arquivo Excel',
+					className: 'btn-outline-success btn-sm mr-1'
+				},
+				{
+					extend: 'csvHtml5',
+					text: 'CSV',
+					titleAttr: 'Gerar arquivo CSV',
+					className: 'btn-outline-primary btn-sm mr-1'
+				},
+				{
+					extend: 'copyHtml5',
+					text: 'Copiar',
+					titleAttr: 'Copiar',
+					className: 'btn-outline-primary btn-sm mr-1'
+				},
+				{
+					extend: 'print',
+					text: 'Imprimir',
+					titleAttr: 'Imprimir Tabela',
+					className: 'btn-outline-primary btn-sm',
+					title: 'BOLETOS PAGOS BRADESCO',
+					messageTop: 'Período: <?php echo $_POST['intervalo']?>',
+				}
+			]
+		});
+	</script>
+	<?
+		}
+	?>
+</main>
+
+<script src="js/dependency/moment/moment.js"></script>
+<script src="js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+<script>
+	$(document).ready(function()
+	{
+
+		
+		$('#datepicker-2, #datepicker-modal-3').daterangepicker({
+			startDate: moment().startOf('hour'),
+			endDate: moment().startOf('hour').add(32, 'hour'),
+			locale:
+			{
+				format: 'DD/MM/YYYY'
+			}
+		});
+		
+		
+
+		$(function(){
+
+			var start = moment().subtract(29, 'days');
+			var end = moment();
+
+			function cb(start, end)
+			{
+				$('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+			}
+
+			$('#datepicker-4').daterangepicker(
+			{
+				startDate: start,
+				endDate: end,
+				ranges:
+				{
+					'Today': [moment(), moment()],
+					'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+					'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+					'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+					'This Month': [moment().startOf('month'), moment().endOf('month')],
+					'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+				}
+			}, cb);
+
+			cb(start, end);
+
+		});
+		
+		
+
+	});
+
+</script>
+
