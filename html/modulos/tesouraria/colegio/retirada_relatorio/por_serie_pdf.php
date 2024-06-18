@@ -17,12 +17,14 @@
             INNER JOIN coopex.pessoa USING (id_pessoa)
             WHERE
                 id_serie = $id_serie
+                AND YEAR ( data_retirada ) = 2024 
             GROUP BY
                 id_pessoa
             ORDER BY
                 nome";
     $pessoa = $coopex->query($sql2);
     $row_pessoa = $pessoa->fetch(PDO::FETCH_OBJ);
+    
 ?>
 
 <link rel="stylesheet" media="screen, print" href="css/page-invoice.css">
@@ -93,6 +95,7 @@
                                         INNER JOIN tesouraria.material USING (id_material)
                                         WHERE
                                             id_serie = $id_serie
+                                            AND YEAR ( data_retirada ) = 2024 
                                         AND id_pessoa = $row_pessoa->id_pessoa";
                                 $material2 = $coopex->query($sql2);
                                 while($row2 = $material2->fetch(PDO::FETCH_OBJ)){

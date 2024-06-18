@@ -29,7 +29,7 @@
 					</div>
 				</div>
 				<?php
-					echo $sql = "SELECT
+					$sql = "SELECT
 								sum( valor_pago ) AS valor_pago,
 								count(*) AS pagamentos,
 								titulo,

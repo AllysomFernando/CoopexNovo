@@ -31,7 +31,7 @@
 			INNER JOIN academico..IAP_informacoes_aluno_periodo_view ON iap_id_registro_curso = rca_id_registro_curso
 			INNER JOIN academico..SER_serie ON iap_id_serie = ser_id_serie
 			WHERE
-				iap_id_periodo_letivo = 5000000241 --and sap_ds_situacao = 'Sem Status'
+				iap_id_periodo_letivo = 5000000244 
 			AND pes_id_pessoa = $id_pessoa
 			AND EXISTS (
 				SELECT
@@ -50,7 +50,7 @@
 				AND prc_id_contrato = cta_id_contrato
 				AND ttf_id_parcela = prc_id_parcela
 				AND ttf_st_situacao IN ('P', 'L', 'G', 'R', 'S')
-			) --Em Compensação, liberado, Pago, Renegociado e Sem valo */
+			)
 			AND EXISTS (
 				SELECT
 					1
@@ -60,7 +60,7 @@
 					mtr_id_periodo_letivo = pel_id_periodo_letivo
 				AND mtr_id_registro_curso = rca_id_registro_curso
 				AND mtr_id_situacao_matricula = 1000000002
-				AND mtr_id_periodo_letivo = 5000000241
+				AND mtr_id_periodo_letivo = 5000000244
 			)
 			ORDER BY
 				crs_nm_resumido,
@@ -141,7 +141,7 @@
 						financeiro..TTF_titulo_financeiro
 					WHERE
 						ttf_id_tipo_titulo = 1000000566
-					AND ttf_dt_referencia > '2023-01-01 00:00:00.000'
+					AND ttf_dt_referencia > '2024-01-01 00:00:00.000'
 					AND ttf_st_situacao IN ('P', 'L', 'G', 'R', 'S')
 					AND ttf_id_cliente_fornecedor = $id_pessoa";
 			$res = mssql_query($sql);

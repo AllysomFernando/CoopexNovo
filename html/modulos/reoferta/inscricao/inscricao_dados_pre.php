@@ -36,7 +36,7 @@
 			
 		$_POST['data_pre_matricula'] = date("Y-m-d H:i:s");
 		$_POST['data_vencimento'] = $vencimento->pre_inscricao_data_final;
-		$_POST['valor'] = 60;
+		$_POST['valor'] = 70;
 		
 		//VERFICA SE ESTÁ CADASTRANDO OU ALTERANDO
 		$sql = !$id_registro ? preparaSQL($_POST, $tabela) : preparaSQL($_POST, $tabela, $chave, $$chave); //MONTA A SQL PARA INSERT OU UPDATE

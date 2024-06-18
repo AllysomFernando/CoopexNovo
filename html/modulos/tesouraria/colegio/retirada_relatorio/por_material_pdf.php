@@ -8,16 +8,16 @@
 
     $id_serie = $_GET['id'];
 
-    $sql2 ="SELECT
-                *
-            FROM
-                tesouraria.retirada
-            INNER JOIN tesouraria.material USING (id_material)
-            INNER JOIN tesouraria.serie USING (id_serie)
-            WHERE
-                id_serie = $id_serie
-            GROUP BY
-                id_material";
+        $sql2 ="SELECT
+                    *
+                FROM
+                    tesouraria.retirada
+                INNER JOIN tesouraria.material USING (id_material)
+                INNER JOIN tesouraria.serie USING (id_serie)
+                WHERE
+                    id_serie = $id_serie
+                GROUP BY
+                    id_material";
 
 
     $pessoa = $coopex->query($sql2);
@@ -102,6 +102,7 @@
 
                                 $material2 = $coopex->query($sql2);
                                 while($row2 = $material2->fetch(PDO::FETCH_OBJ)){
+                                    
                             ?>
                                 <tr>
                                     <td width="50%" class="text-left strong"><?=utf8_encode($row2->nome)?></td>

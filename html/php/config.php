@@ -1,6 +1,13 @@
 <?php	
 	session_start();
 
+	require_once("mobile_detect.php");
+    $detect = new Mobile_Detect;
+    $mobile = false;
+    if($detect->isMobile() && !$detect->isTablet()){
+        $mobile = true;
+    }
+
 	//echo $_SESSION['coopex']['usuario']['id_pessoa'];
 
 	if($_SESSION['coopex']['usuario']['id_pessoa'] == 1000095486){

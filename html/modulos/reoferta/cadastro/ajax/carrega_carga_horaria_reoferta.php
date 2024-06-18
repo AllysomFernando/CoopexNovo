@@ -8,7 +8,7 @@
 
 	$id_departamento = $_GET['id_curso'];
 
-	$tabela = $id_departamento == 1000000115 ? 2 : 3;
+	$tabela = $id_departamento == 1000000115 ? 4 : 5;
 
 	$sql = "SELECT
 				id_carga_horaria,

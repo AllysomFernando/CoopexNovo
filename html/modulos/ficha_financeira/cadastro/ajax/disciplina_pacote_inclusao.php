@@ -63,6 +63,7 @@
 		$row = mssql_fetch_assoc($res);
 		$id_pacote = $row['pac_id_pacote'];
 	}
+	
 
 	$sql = "SELECT
 				atc_id_atividade,

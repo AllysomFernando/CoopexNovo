@@ -4,16 +4,16 @@
 	require_once("../../../../php/utils.php");
 
 	$id_registro = $_GET['id_ficha_financeira'];
-	$email = $_GET['email'];
+	$email = trim($_GET['email']);
 
-	$usuario = $_SESSION['coopex']['usuario']['usuario'];
-	$sql = "INSERT INTO `ficha_financeira`.`ficha_financeira_etapa` ( `id_ficha_financeira`, `id_etapa`, `data_cadastro`, `forma_contato`, `contato`, `enviado_por` )
-			VALUES ($id_registro, 2, now(), '2', '$whats', '$usuario')";
+	$usuario = trim($_SESSION['coopex']['usuario']['usuario']);
+	$sql = "INSERT INTO `ficha_financeira`.`ficha_financeira_etapa`
+				 ( `id_ficha_financeira`, `id_etapa`, `data_cadastro`, `forma_contato`, `contato`, `enviado_por` )
+			VALUES ($id_registro, 2, now(), '2', '$email', '$usuario')";
+	$coopex->query($sql);
 
 	$sql = "UPDATE ficha_financeira.ficha_financeira SET id_etapa=2 WHERE (id_ficha_financeira=$id_registro)";
 	$coopex->query($sql);		
-
-	$res = $coopex->query($sql);
 
 	$remetente		= "fichafinanceira@fag.edu.br";
 	$destinatario 	= $email;

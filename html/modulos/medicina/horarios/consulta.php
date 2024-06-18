@@ -78,7 +78,7 @@
 									<td class="pointer"><?= texto($row->periodo)?></td>
 									<td><?= texto ($row->especialidade)?></td>
 									<td><?= texto($row->local)?></td>
-									<td><?= texto(nome_sagres($row->id_docente))?></td>
+									<td><?= texto($row->docente)?></td>
 
 									<td style="width: 70px">
 										<?php

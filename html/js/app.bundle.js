@@ -10,7 +10,7 @@ function excluir_registro(tabela, chave, registro){
     });
     swalWithBootstrapButtons
         .fire({
-            title: "Deseja realmente ecluir este registro?",
+            title: "Deseja realmente excluir este registro?",
             type: "warning",
             showCancelButton: true,
             confirmButtonText: "Sim, excluir o registro!",

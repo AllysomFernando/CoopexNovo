@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sistema Coopex</title>
+</head>
+
+<body>
+  <main id="js-page-content" role="main" class="page-content" id="paper">
+    <div class="container">
+      <div data-size="A4" class="d-flex flex-column align-items-center justify-content-center w-100" id="page">
+        <div class="d-flex flex-column align-items-center justify-content-center w-100" id="header">
+          <div class="col-sm-12 email-head">
+            <img src="https://coopex.fag.edu.br/img/svg/logo-coopex-full-roxo.svg" height="30" style="max-width: 100%; height: auto;" />
+          </div>
+        </div>
+        <div class="row w-100">
+          <h3 class="display-4 fw-500 color-primary-600 keep-print-font pt-4 m-0 text-start w-100">
+            <?php echo $titulo ?>
+          </h3>
+          <button style="background-color: red; width: 100px; height: 80px;">HELLO WORLD</button>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-center w-100 flex-grow h-100" id="body">
+          <div class="col-sm-12 mt-5 flex-grow" id="content">
+            <p class="lead"><?php echo $body ?></p>
+          </div>
+        </div>
+        <div class="row" id="footer">
+          <div class="d-flex flex-column align-items-center justify-content-center col-sm-12 mt-5">
+            <div class="d-flex align-items-center justify-content-center w-100 pb-5">
+              <div class="line"></div>
+              <img src="https://coopex.fag.edu.br/img/svg/logo-coopex-full-roxo.svg" style="max-width: 100%; height: auto;" />
+              <div class="line"></div>
+            </div>
+            <p class="lead">Está com problemas? <a href="https://coopex.fag.edu.br/coopex/ticket">Clique aqui</a> para enviar um ticket</p>
+            <div class="d-flex flex-column align-items-center justify-content-center w-100">
+              <div class="d-flex align-items-center justify-content-between w-100 px-6 w-100 text-center">
+                <p class="lead text-primary mr-2 ml-2">Fernando<br>(45) 3321-3784</p>
+                <p class="lead text-primary mr-2 ml-2">Allysom<br>(45) 3321-3886</p>
+                <p class="lead text-primary mr-2 ml-2">Guilherme<br>(45) 3321-3966</p>
+              </div>
+              <p class="lead text-primary">Avenida das Torres, 500 | Bairro FAG. Cascavel, Paraná. Prédio reitoria, 2º andar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

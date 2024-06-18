@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
 								<div class="form-row">
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Altura <span class="text-danger">*</span></label>
-										<input id="estatura" title="1" autocomplete="off" name="estatura" class="form-control decimal" type="text" value="<?php echo isset($row->estatura) ? $row->estatura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=".">
+										<input id="estatura" title="1" autocomplete="off" name="estatura" class="form-control decimal" type="text" value="<?php echo isset($row->estatura) ? $row->estatura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="." required>
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
 										</div>
@@ -90,7 +90,7 @@ if (isset($_GET['id'])) {
 
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Peso <span class="text-danger">*</span></label>
-										<input id="massa_corporal" title="1" autocomplete="off" name="massa_corporal" class="form-control decimal" type="text" value="<?php echo isset($row->massa_corporal) ? $row->massa_corporal : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="massa_corporal" title="1" autocomplete="off" name="massa_corporal" class="form-control decimal" type="text" value="<?php echo isset($row->massa_corporal) ? $row->massa_corporal : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -98,7 +98,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Envergadura <span class="text-danger">*</span></label>
-										<input id="envergadura" title="1" autocomplete="off" name="envergadura" class="form-control decimal" type="text" value="<?php echo isset($row->envergadura) ? $row->envergadura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="envergadura" title="1" autocomplete="off" name="envergadura" class="form-control decimal" type="text" value="<?php echo isset($row->envergadura) ? $row->envergadura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -106,7 +106,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Perímetro Cintura <span class="text-danger">*</span></label>
-										<input id="massa_corporal" title="1" autocomplete="off" name="perimetro_cintura" class="form-control decimal" type="text" value="<?php echo isset($row->perimetro_cintura) ? $row->perimetro_cintura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="massa_corporal" title="1" autocomplete="off" name="perimetro_cintura" class="form-control decimal" type="text" value="<?php echo isset($row->perimetro_cintura) ? $row->perimetro_cintura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -114,7 +114,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Sentar-e-Alcançar <span class="text-danger">*</span></label>
-										<input id="sentar_alcacar" title="1" autocomplete="off" name="sentar_alcacar" class="form-control decimal" type="text" value="<?php echo isset($row->sentar_alcacar) ? $row->sentar_alcacar : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="sentar_alcacar" title="1" autocomplete="off" name="sentar_alcacar" class="form-control decimal" type="text" value="<?php echo isset($row->sentar_alcacar) ? $row->sentar_alcacar : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -122,7 +122,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Abdominal <span class="text-danger">*</span></label>
-										<input id="abdominal" title="1" autocomplete="off" name="abdominal" class="form-control decimal" type="text" value="<?php echo isset($row->abdominal) ? $row->abdominal : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="abdominal" title="1" autocomplete="off" name="abdominal" class="form-control decimal" type="text" value="<?php echo isset($row->abdominal) ? $row->abdominal : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -130,7 +130,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Salto Horizontal <span class="text-danger">*</span></label>
-										<input id="salto_distancia" title="1" autocomplete="off" name="salto_distancia" class="form-control decimal" type="text" value="<?php echo isset($row->salto_distancia) ? $row->salto_distancia : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="salto_distancia" title="1" autocomplete="off" name="salto_distancia" class="form-control decimal" type="text" value="<?php echo isset($row->salto_distancia) ? $row->salto_distancia : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -138,7 +138,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Corrida de 20 metros <span class="text-danger">*</span></label>
-										<input id="corrida_metros" title="1" autocomplete="off" name="corrida_metros" class="form-control decimal" type="text" value="<?php echo isset($row->corrida_metros) ? $row->corrida_metros : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="corrida_metros" title="1" autocomplete="off" name="corrida_metros" class="form-control decimal" type="text" value="<?php echo isset($row->corrida_metros) ? $row->corrida_metros : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -146,7 +146,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">6 Minutos <span class="text-danger">*</span></label>
-										<input id="seis_minutos" title="1" autocomplete="off" name="seis_minutos" class="form-control decimal" type="text" value="<?php echo isset($row->seis_minutos) ? $row->seis_minutos : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="seis_minutos" title="1" autocomplete="off" name="seis_minutos" class="form-control decimal" type="text" value="<?php echo isset($row->seis_minutos) ? $row->seis_minutos : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
 
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Arremesso Medicineball <span class="text-danger">*</span></label>
-										<input id="arremesso_medicineball" title="1" autocomplete="off" name="arremesso_medicineball" class="form-control decimal" type="text" value="<?php echo isset($row->arremesso_medicineball) ? $row->arremesso_medicineball : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="arremesso_medicineball" title="1" autocomplete="off" name="arremesso_medicineball" class="form-control decimal" type="text" value="<?php echo isset($row->arremesso_medicineball) ? $row->arremesso_medicineball : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -163,7 +163,7 @@ if (isset($_GET['id'])) {
 									</div>
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Quadradado <span class="text-danger">*</span></label>
-										<input id="quadrado" title="1" autocomplete="off" name="quadrado" class="form-control decimal" type="text" value="<?php echo isset($row->quadrado) ? $row->quadrado : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="quadrado" title="1" autocomplete="off" name="quadrado" class="form-control decimal" type="text" value="<?php echo isset($row->quadrado) ? $row->quadrado : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
 											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
@@ -172,7 +172,7 @@ if (isset($_GET['id'])) {
 
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Observação: <span class="text-danger">*</span></label>
-										<textarea id="observacao" class="form-control" name="observacao"><?php echo isset($row->observacao) ? $row->observacao : "" ?></textarea>
+										<textarea id="observacao" class="form-control" name="observacao" required><?php echo isset($row->observacao) ? $row->observacao : "" ?> </textarea>
 									</div>
 								</div>
 							</div>

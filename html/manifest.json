@@ -1,0 +1,20 @@
+{
+  "name": "COOPEX",
+  "short_name": "COOPEX",
+  "start_url": "./login.php",
+  "display": "fullscreen",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "img/coopex_icone_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/coopex_icone_512_2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -46,6 +46,7 @@
 												INNER JOIN tesouraria.retirada USING ( id_material ) 
 											WHERE
 												ativo = 1 
+												AND YEAR ( data_retirada ) = 2024	
 											GROUP BY
 												id_material 
 											ORDER BY

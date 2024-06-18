@@ -17,7 +17,8 @@
 				id_cronograma, data_reoferta, horario_inicio, horario_termino, SEC_TO_TIME(TRUNCATE(TIME_TO_SEC(TIMEDIFF(horario_termino, horario_inicio)) * 1.2, 0)) as horas
 			FROM
 				coopex_reoferta.cronograma
-			WHERE id_reoferta = $id_reoferta";
+			WHERE id_reoferta = $id_reoferta
+			ORDER BY data_reoferta, horario_inicio";
 
 	echo '{"data":[';
 

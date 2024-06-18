@@ -62,6 +62,50 @@
 							$coopex->query($sql);
 						}
 
+						if($evento == 'BIGJ'){
+							
+
+							$sql = "UPDATE `colegio`.`big_jump_meia` SET `pagamento` = 1, `data_pagamento` = '$data_pagamento' WHERE `id_big_jump_meia` = $inscricao";
+							$coopex->query($sql);
+
+							$sql = "UPDATE `colegio`.`big_jump_boleto` SET `pago` = 1, `data_pagamento` = '$data_pagamento', `valor_pago` = $valor_pago, `id_retorno` = $id_retorno
+									WHERE `id_big_jump_meia` = $inscricao";
+							$coopex->query($sql);
+						}
+
+						if($evento == 'SPOR'){
+
+							$sql = "UPDATE `colegio`.`sports` SET `pagamento` = 1, `data_pagamento` = '$data_pagamento' WHERE `id_sports` = $inscricao";
+							$coopex->query($sql);
+
+							$sql = "UPDATE `colegio`.`sports_boleto` SET `pago` = 1, `data_pagamento` = '$data_pagamento', `valor_pago` = $valor_pago, `id_retorno` = $id_retorno
+									WHERE `nosso_numero` = '$nosso_numero'";
+							$coopex->query($sql);
+
+						}
+
+						if($evento == 'SPOM'){
+
+							/*$sql = "UPDATE `colegio`.`matricula_boleto` SET `pagamento` = 1, `data_pagamento` = '$data_pagamento' WHERE `id_sports` = $inscricao";
+							$coopex->query($sql);*/
+
+							$sql = "UPDATE `colegio`.`matricula_boleto` SET `pago` = 1, `data_pagamento` = '$data_pagamento', `valor_pago` = $valor_pago, `id_retorno` = $id_retorno
+									WHERE `nosso_numero` = '$nosso_numero'";
+							$coopex->query($sql);
+
+						}
+
+						if($evento == 'CDTM'){
+
+							/*$sql = "UPDATE `colegio`.`matricula_boleto` SET `pagamento` = 1, `data_pagamento` = '$data_pagamento' WHERE `id_sports` = $inscricao";
+							$coopex->query($sql);*/
+
+							$sql = "UPDATE `colegio`.`cdt_matricula_boleto` SET `pago` = 1, `data_pagamento` = '$data_pagamento', `valor_pago` = $valor_pago, `id_retorno` = $id_retorno
+									WHERE `nosso_numero` = '$nosso_numero'";
+							$coopex->query($sql);
+
+						}
+
 						if($evento == 'REMB'){
 							$sql = "UPDATE `coopex_reoferta`.`matricula` SET `pago` = 1, `data_pagamento` = '$data_pagamento' WHERE `id_matricula` = $inscricao";
 							$coopex->query($sql);

@@ -33,6 +33,10 @@
 				LEFT JOIN coopex_reoferta.matricula USING ( id_reoferta ) 
 			WHERE
 				id_parecer = 2 
+				and id_periodo = $periodo
+				or DATE (
+	now()) BETWEEN a.pre_inscricao_data_inicial 
+	AND a.inscricao_data_final 
 				AND a.excluido = 0
 				AND id_reoferta NOT IN ( SELECT id_reoferta FROM coopex_reoferta.academico_autorizado ) 
 				OR id_reoferta IN ( SELECT id_reoferta FROM coopex_reoferta.academico_autorizado

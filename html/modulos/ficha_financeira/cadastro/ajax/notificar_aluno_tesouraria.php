@@ -13,6 +13,7 @@
 	$whats = str_replace(" ", "", $whats);
 	$whats = str_replace("-", "", $whats);
 	$whats = str_replace("%20", "", $whats);
+	$whats = $whats[0] == 0 ? substr($whats, 1, 99) : $whats;
 	//$whats = "45999113888";
 
 	$texto	= "Declaração de aceite para alteração de disciplinas e previsão de mensalidades:

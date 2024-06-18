@@ -183,7 +183,7 @@
 								<tr>
 									<th>Disciplina</th>
 									<th>Curso</th>
-									<th>Período</th>
+									<!-- <th>Período</th> -->
 									<th>Cadastro</th>
 									<th>Situação</th>
 									<th class="text-center">Ações</th>
@@ -198,7 +198,7 @@
 										<td class="pointer"><?php echo texto($row->nome) ?></td>
 										<td><?php echo texto($row->departamento) ?></td>
 
-										<td><?php echo texto($row->periodo) ?></td>
+										<!-- <td><?php echo texto($row->periodo) ?></td> -->
 										<td><?php echo ($row->data_cadastro) ?></td>
 										<td><span class="badge badge-<?php echo $row->cor; ?> badge-pill"><?php echo texto($row->etapa); ?></span></td>
 										<td style="width: 100px" class="text-center">

@@ -27,7 +27,7 @@
             INNER JOIN academico..IAP_informacoes_aluno_periodo_view ON iap_id_registro_curso = rca_id_registro_curso
             INNER JOIN academico..SER_serie ON iap_id_serie = ser_id_serie
             WHERE
-                iap_id_periodo_letivo = 5000000241 --and sap_ds_situacao = 'Sem Status'
+                iap_id_periodo_letivo = 5000000244 --and sap_ds_situacao = 'Sem Status'
             AND pes_id_pessoa = $id_pessoa
             AND EXISTS (
                 SELECT
@@ -56,7 +56,7 @@
                     mtr_id_periodo_letivo = pel_id_periodo_letivo
                 AND mtr_id_registro_curso = rca_id_registro_curso
                 AND mtr_id_situacao_matricula = 1000000002
-                AND mtr_id_periodo_letivo = 5000000241
+                AND mtr_id_periodo_letivo = 5000000244
             )
             ORDER BY
                 crs_nm_resumido,
@@ -107,28 +107,12 @@
                 </div>
             </div>
 
-            <?
-                $sql2 = "SELECT
-                            *
-                        FROM
-                            tesouraria.retirada
-                        INNER JOIN tesouraria.material USING (id_material)
-                        INNER JOIN tesouraria.serie USING (id_serie)
-                        WHERE
-                            id_pessoa = $id_pessoa";
-                $material2 = $coopex->query($sql2);
-                $row2 = $material2->fetch(PDO::FETCH_OBJ);
-            ?>
 
             <div class="row">
                 <div class="p-3" style="font-size: 18px;">
-                    Declaro que, na presente data, recebi do COLÉGIO FAG (Fundação Assis Gurgacz - CNPJ
-                    02.203.539/0001-73) os Materiais relacionados abaixo, refentes ao ano de 2023, do aluno(a) <strong><?=utf8_encode($row['nome'])?></strong>,
-                    matriculado(a) na série: <strong><?=utf8_encode($row2->serie)?></strong>.<br><br>
-                    Declaro, ainda, estar ciente de que o material é de uso individual do aluno e que deve ser
-                    trazido para o Colégio diariamente, a fim de possibilitar o devido acompanhamento,
-                    desenvolvimento e participação do aluno em suas atividades escolares e em seu processo
-                    didático-pedagógico.
+                Declaro que, na presente data, recebi do COLÉGIO FAG (Fundação Assis Gurgacz - CNPJ 02.203.539/0001-73) o kit de Materiais Poliedro do 01º semestre de <?=date('Y')?>, bem como o kit do material Bilíngue do ano de 2024 do aluno (a) <strong><?=utf8_encode($row['nome'])?></strong>,
+                    matriculado(a) na série: <strong><?=utf8_encode($row['serie'])?></strong>.<br><br>
+                    Declaro, ainda, estar ciente de que o material é de uso individual do aluno e que deve ser trazido para o Colégio diariamente, a fim de possibilitar o devido acompanhamento, desenvolvimento e participação do aluno em suas atividades escolares e em seu processo didático-pedagógico. Estou ciente de que o COLÉGIO FAG não se responsabiliza pela perda, dano ou extravio do material didático após a entrega efetiva ao aluno/responsável, devendo este arcar com os valores inerentes a nova aquisição do material caso o material seja perdido ou inutilizado.
                 </div>
               
             </div>
@@ -153,7 +137,9 @@
                                         INNER JOIN tesouraria.material USING (id_material)
                                         INNER JOIN tesouraria.serie USING (id_serie)
                                         WHERE
-                                            id_pessoa = $id_pessoa";
+                                            id_pessoa = $id_pessoa
+                                        AND
+                                        ano = year(now())";
                                 $material2 = $coopex->query($sql2);
                                 while($row2 = $material2->fetch(PDO::FETCH_OBJ)){
                             ?>

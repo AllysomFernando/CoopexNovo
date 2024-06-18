@@ -5,6 +5,12 @@ php_value short_open_tag 1
 
 RewriteRule ^boleto/reoferta/prematricula/([0-9]*)$ php/registro_bradesco/reoferta_pre_matricula.php?id=$1 [L]
 RewriteRule ^boleto/reoferta/matricula/([0-9]*)$ php/registro_bradesco/reoferta_matricula.php?id=$1 [L]
+RewriteRule ^boleto/sports/matricula/([0-9]*)$ php/registro_bradesco/sports_matricula_boleto.php?id=$1 [L]
+RewriteRule ^boleto/clube_da_tarefa/matricula/([0-9]*)$ php/registro_bradesco/clube_da_tarefa_boleto.php?id=$1 [L]
+
+
+RewriteRule ^boleto/big_jump/([0-9]*)$ php/registro_bradesco/big_jump.php?id=$1 [L]
+RewriteRule ^boleto/sports/([0-9]*)$ php/registro_bradesco/sports.php?id=$1 [L]
 
 RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)$ coopex.php?modulo=$1&arquivo=$2 [L]
 RewriteRule ^([a-z_0-9]*)/([a-z_0-9]*)/([0-9]*)$ coopex.php?modulo=$1&arquivo=$2&id=$3 [L]
@@ -26,3 +32,8 @@ RewriteRule ^home2$ coopex2.php [L]
 RewriteRule ^home3$ coopex3.php [L]
 RewriteRule ^logout$ logout.php [L]
 RewriteRule ^bloqueio$ locked.php [L]
+RewriteRule ^pos$ login_pos.php [L]
+RewriteRule ^esportes$ login_esportes.php [L]
+RewriteRule ^cadastro$ cadastro.php [L]
+RewriteRule ^cadastro_esportes$ cadastro_esportes.php [L]
+

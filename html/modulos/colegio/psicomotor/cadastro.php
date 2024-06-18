@@ -85,72 +85,72 @@ if (isset($_GET['id'])) {
 								<div class="form-row">
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Altura (Metros)<span class="text-danger"> * </span></label>
-										<input id="altura" title="Altura" autocomplete="off" name="altura" class="form-control decimal" type="text" value="<?php echo isset($row->altura) ? $row->altura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="altura" title="Altura" autocomplete="off" name="altura" class="form-control decimal" type="text" value="<?php echo isset($row->altura) ? $row->altura : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 										<div class="invalid-feedback">
-											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
+											Campo obrigatório, preencha a altura, Ex.: 1,80
 										</div>
 									</div>
 
 									<div class="col-md-3 mb-3">
 										<label class="form-label" for="validationCustom03">Peso (Kg)<span class="text-danger"> * </span></label>
-										<input id="peso" title="Peso" autocomplete="off" name="peso" class="form-control decimal" type="text" value="<?php echo isset($row->peso) ? $row->peso : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal=",">
+										<input id="peso" title="Peso" autocomplete="off" name="peso" class="form-control decimal" type="text" value="<?php echo isset($row->peso) ? $row->peso : "" ?>" style="text-align: right; font-weight: bold;" data-thousands="." data-decimal="," required>
 
 										<div class="invalid-feedback">
-											Campo obrigatório, preencha o período, Ex.: <?php echo date("Y") ?>/2
+											Campo obrigatório, preencha o peso, Ex.: 90kg
 										</div>
 									</div>
 								</div>
 
 								<div class="form-row">
-									<div class="col-md-3 mb-3">
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Coordenação Viso-Manual<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "M") ? "active" : "" ?>">
-													<input type="radio" name="coord_viso_manual" id="option1-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="coord_viso_manual" id="option1-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "M") ? "checked" : "" ?> value="M" required>
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "F") ? "active" : "" ?>">
-													<input type="radio" name="coord_viso_manual" id="option2-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="coord_viso_manual" id="option2-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "D") ? "active" : "" ?>">
-													<input type="radio" name="coord_viso_manual" id="option3-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="coord_viso_manual" id="option3-cvm" <?php echo (isset($row->coord_viso_manual) && strtoupper($row->coord_viso_manual) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil
 												</label>
 											</div>
 										</div>
-									</div>
-
-									<div class="col-md-3 mb-3">
+									</div>	
+									
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Controle Postural<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "M") ? "active" : "" ?>">
-													<input type="radio" name="controle_postural" id="option1-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="controle_postural" id="option1-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "M") ? "checked" : "" ?> value="M" required> 
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "F") ? "active" : "" ?>">
-													<input type="radio" name="controle_postural" id="option2-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="controle_postural" id="option2-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "D") ? "active" : "" ?>">
-													<input type="radio" name="controle_postural" id="option3-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="controle_postural" id="option3-cp" <?php echo (isset($row->controle_postural) && strtoupper($row->controle_postural) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil
@@ -160,28 +160,28 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 
-									<div class="col-md-3 mb-3">
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Organização Perceptiva<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "M") ? "active" : "" ?>">
-													<input type="radio" name="organizacao_perceptiva" id="option1-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="organizacao_perceptiva" id="option1-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "M") ? "checked" : "" ?> value="M" required>
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "F") ? "active" : "" ?> ">
-													<input type="radio" name="organizacao_perceptiva" id="option2-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="organizacao_perceptiva" id="option2-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "D") ? "active" : "" ?>">
-													<input type="radio" name="organizacao_perceptiva" id="option3-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="organizacao_perceptiva" id="option3-op" <?php echo (isset($row->organizacao_perceptiva) && strtoupper($row->organizacao_perceptiva) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil
@@ -191,28 +191,28 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 
-									<div class="col-md-3 mb-3">
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Coordenação Dinâmica<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "M") ? "active" : "" ?>">
-													<input type="radio" name="coord_dinamica" id="option1-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="coord_dinamica" id="option1-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "M") ? "checked" : "" ?> value="M" required>
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "F") ? "active" : "" ?>">
-													<input type="radio" name="coord_dinamica" id="option2-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="coord_dinamica" id="option2-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "D") ? "active" : "" ?>">
-													<input type="radio" name="coord_dinamica" id="option3-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="coord_dinamica" id="option3-cd" <?php echo (isset($row->coord_dinamica) && strtoupper($row->coord_dinamica) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil
@@ -222,28 +222,28 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 
-									<div class="col-md-3 mb-3">
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Controle do Próprio Corpo<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "M") ? "active" : "" ?>">
-													<input type="radio" name="controle_proprio_corpo" id="option1-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="controle_proprio_corpo" id="option1-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "M") ? "checked" : "" ?> value="M" required>
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "F") ? "active" : "" ?>">
-													<input type="radio" name="controle_proprio_corpo" id="option2-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="controle_proprio_corpo" id="option2-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "D") ? "active" : "" ?>">
-													<input type="radio" name="controle_proprio_corpo" id="option3-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="controle_proprio_corpo" id="option3-cpc" <?php echo (isset($row->controle_proprio_corpo) && strtoupper($row->controle_proprio_corpo) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil
@@ -253,28 +253,28 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 
-									<div class="col-md-3 mb-3">
+									<div class="col-md-4 mb-4">
 										<div class="frame-wrap mb-0">
 											<label class="form-label" for="validationCustom03">Linguagem<span class="text-danger"> * </span></label>
 											<br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "M") ? "active" : "" ?>">
-													<input type="radio" name="linguagem" id="option1-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "M") ? "checked" : "" ?> value="M">
+													<input type="radio" name="linguagem" id="option1-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "M") ? "checked" : "" ?> value="M" required>
 													<img src="../../../img/favicon/icon-psicomotor-media.svg" alt="" width="50px" />
 													<br>
 													Normal
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "F") ? "active" : "" ?>">
-													<input type="radio" name="linguagem" id="option2-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "F") ? "checked" : "" ?> value="F">
+													<input type="radio" name="linguagem" id="option2-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "F") ? "checked" : "" ?> value="F" required>
 													<img src="../../../img/favicon/icon-psicomotor-facil.svg" alt="" width="50px" />
 													<br>
 													Fácil
 												</label>
 
 												<label class="btn btn-info waves-effect waves-themed <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "D") ? "active" : "" ?>">
-													<input type="radio" name="linguagem" id="option3-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "D") ? "checked" : "" ?> value="D">
+													<input type="radio" name="linguagem" id="option3-l" <?php echo (isset($row->linguagem) && strtoupper($row->linguagem) == "D") ? "checked" : "" ?> value="D" required>
 													<img src="../../../img/favicon/icon-psicomotor-dificil.svg" alt="" width="50px" />
 													<br>
 													Difícil

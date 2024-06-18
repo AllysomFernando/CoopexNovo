@@ -19,6 +19,7 @@
 	} else {
 		$$chave = 0;
 	}
+	
 ?>
 <link rel="stylesheet" media="screen, print" href="css/formplugins/select2/select2.bundle.css">
 <link rel="stylesheet" media="screen, print" href="css/datagrid/datatables/datatables.bundle.css">
@@ -235,8 +236,10 @@
 											<label class="form-label" for="select2-ajax">
 												Professor
 											</label>
+
+											<input value="<?= isset($dados->docente) ? $dados->docente : ""?>" type="text" class="form-control" name="docente">
 											
-											<select name="id_docente" data-placeholder="Selecione o docente da disciplina" class="js-consultar-usuario-medicina form-control" >
+											<!-- <select name="id_docente" data-placeholder="Selecione o docente da disciplina" class="js-consultar-usuario-medicina form-control" >
 												<?php
 													if(isset($dados->id_professor)){
 														$id_docente = $dados->id_professor;
@@ -259,7 +262,7 @@
 												<?php	
 												 	}
 												?>
-											</select>
+											</select> -->
 										</div>	
 									</div>
 

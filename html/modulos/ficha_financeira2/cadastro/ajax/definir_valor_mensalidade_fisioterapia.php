@@ -11,7 +11,7 @@
 
 	//$_SESSION['ficha_financeira']['id_periodo_letivo'] = $id_periodo;
 
-	echo $sql = "SELECT
+	$sql = "SELECT
 				valor, valor_mensalidade, valor_mensalidade / 6 as mensalidade
 			FROM
 				ficha_financeira.valor_hora 

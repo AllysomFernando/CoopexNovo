@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+		/>
+		<title>StickyMobile BootStrap</title>
+		<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="fonts/css/fontawesome-all.min.css"
+		/>
+		<link
+			rel="manifest"
+			href="_manifest.json"
+			data-pwa-version="set_in_manifest_and_pwa_js"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="app/icons/icon-192x192.png"
+		/>
+	</head>
+
+	<body
+		class="theme-light"
+		data-highlight="highlight-red"
+		data-gradient="body-default"
+	>
+		<div id="preloader">
+			<div class="spinner-border color-highlight" role="status"></div>
+		</div>
+
+		<div id="page">
+			<div class="page-content header-clear-small">
+				<div
+					class="card card-style shadow-l mb-3"
+					data-card-height="250"
+					style="
+						background-image: url('images/semana/pp.png');
+						height: 250px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-color: #011f43;
+					"
+				></div>
+
+				<!-- <div class="card card-style">
+            <div class="content text-center mb-n2">
+                <img src="images/pictures/faces/2s.png" width="200" class="mx-auto rounded-circle mb-n3">
+                <p class="mb-n2 font-11 badge bg-red-dark text-uppercase">Lead Photographer</p>
+                <h1 class="pt-2 mb-n1 font-26">Elder Moraes</h1>
+                <p class="mb-4 font-11 opacity-50"><i class="fa fa-map-marker pe-2"></i> Palo Alto, California</p>
+                <p>
+                    Ut molestie leo nec est venenatis, eget euismod tellus venenatis. Phasellus sit amet odio augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas
+                </p>
+                <div class="text-center">
+                    <a href="#" class="icon icon-xs bg-facebook rounded-xl"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon icon-m mx-2 bg-instagram rounded-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="icon icon-xs bg-twitter rounded-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="pt-2 d-block color-theme opacity-30">johndoe@domain.com</a>
+                </div>
+            </div>
+        </div> -->
+
+				<div class="card card-style">
+					<div class="content mb-0">
+						<div class="d-flex mb-n1">
+							<div>
+								<h4
+									class="font-700 text-uppercase font-12 mb-n1 mt-n2 opacity-30"
+								>
+									Dia 01
+								</h4>
+								<h1 class="mb-3">20/05</h1>
+							</div>
+						</div>
+						<div class="divider mb-3"></div>
+					</div>
+
+					<div class="content mt-n2">
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/elder.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H</p>
+								<h2>Elder Moraes</h2>
+
+								<p class="line-height-m mt-2">
+									Pensando em carreira desde cedo
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/francis.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H55</p>
+								<h2>Francis Gonçalves</h2>
+
+								<p class="line-height-m mt-2">
+									Além dos Limites: As Mais Recentes Inovações em IA e Seus
+									Impactos
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/luis_fabricio.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">20H30</p>
+								<h2>Luis Fabrício De Llamas</h2>
+
+								<p class="line-height-m mt-2">
+									Importância da comunidade na sua jornada dev
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/clovis2.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">21H30</p>
+								<h2>Clóvis Wichoski</h2>
+								<p class="line-height-m mt-2">
+									Descubra o poder do Agile-Code: acelere seu desenvolvimento
+									mantendo a soberania tecnológica!
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card card-style">
+					<div class="content mb-0">
+						<div class="d-flex mb-n1">
+							<div>
+								<h4
+									class="font-700 text-uppercase font-12 mb-n1 mt-n2 opacity-30"
+								>
+									Dia 02
+								</h4>
+								<h1 class="mb-3">21/05</h1>
+							</div>
+						</div>
+						<div class="divider mb-3"></div>
+					</div>
+
+					<div class="content mt-n2">
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/ender2.jpg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H10</p>
+								<h2>Ender Assessoria</h2>
+
+								<p class="line-height-m mt-2">
+									A propriedade intelectual e seus reflexos na proteção dos
+									programas de computador
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/es.png"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H50</p>
+								<h2>Pitch de Projetos do Curso</h2>
+
+								<p class="line-height-m mt-2">Pitch de Projetos do Curso</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/isidro.jpg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">20H30</p>
+								<h2>Professor Isidro</h2>
+
+								<p class="line-height-m mt-2">
+									A importância da base para um Dev
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/fag_forte.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">21H15</p>
+								<h2>Bateria Peçonhenta</h2>
+								<p class="line-height-m mt-2">Bateria Peçonhenta (FAG Forte)</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/es.png"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">21H30</p>
+								<h2>Divulgação 3 melhores pitch com premiação</h2>
+								<p class="line-height-m mt-2">
+									Divulgação 3 melhores pitch com premiação
+								</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/coffee.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">21H45</p>
+								<h2>Coffe Break (30 minutos)</h2>
+								<p class="line-height-m mt-2">Coffe Break (30 minutos)</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card card-style">
+					<div class="content mb-0">
+						<div class="d-flex mb-n1">
+							<div>
+								<h4
+									class="font-700 text-uppercase font-12 mb-n1 mt-n2 opacity-30"
+								>
+									Dia 03
+								</h4>
+								<h1 class="mb-3">22/05</h1>
+							</div>
+						</div>
+						<div class="divider mb-3"></div>
+					</div>
+
+					<div class="content mt-n2">
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/helias2.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H10</p>
+								<h2>Helias Rodrigues</h2>
+
+								<p class="line-height-m mt-2">DevOps</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/diogo.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">19H50</p>
+								<h2>Diogo Longhi</h2>
+
+								<p class="line-height-m mt-2">Startups</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/es.png"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">20H30</p>
+								<h2>Open Innovation</h2>
+
+								<p class="line-height-m mt-2">Pitch Reverso (30 minutos)</p>
+							</div>
+						</div>
+						<div class="divider my-3"></div>
+						<div class="d-flex bd-highlight mb-n2">
+							<div class="p-2 flex-shrink-1">
+								<img
+									src="images/empty.png"
+									data-src="images/semana/vinicius.jpeg"
+									width="90"
+									class="preload-img rounded-circle"
+								/>
+							</div>
+							<div class="p-2 w-100 bd-highlight">
+								<p class="mt-n2 mb-n2 font-10 color-highlight">21H15</p>
+								<h2>Vinícius Rafael Migliorança - Globo</h2>
+								<p class="line-height-m mt-2">
+									Desenvolvimento de software para ambiente Cloud - Developers
+									vs DevOps
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card card-style">
+					<div class="content mb-0">
+						<div class="d-flex mb-n1">
+							<div>
+								<h4
+									class="font-700 text-uppercase font-12 mb-n1 mt-n2 opacity-30"
+								>
+									APOIO
+								</h4>
+								<h1 class="mb-3"></h1>
+							</div>
+						</div>
+						<div class="divider mb-3"></div>
+					</div>
+					<div class="content">
+						<div class="row mb-0 mt-3">
+							<div class="col-6 pe-0">
+								<div class="text-center">
+									<img class="rounded-m mb-3 preload-img entered loaded shadow-l" src="images/semana/quarkus.jpg" data-src="images/pictures/faces/1s.png" width="120" data-ll-status="loaded">
+									<!-- <h1 class="font-19 mb-n2">Quarkus Club</h1> -->
+								</div>
+							</div>
+							<div class="col-6 ps-0">
+								<div class="text-center">
+									<img class="rounded-m mb-3 preload-img entered loaded shadow-l" src="images/semana/smart.jpg" data-src="images/pictures/faces/2s.png" width="120" data-ll-status="loaded">
+									<!-- <h1 class="font-19 mb-n2">SmartBR</h1> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+		<script type="text/javascript" src="scripts/custom.js"></script>
+	</body>
+</html>

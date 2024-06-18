@@ -11,9 +11,17 @@ require_once('conecta.php');
 
 
 
-$consulta = "select b.id_evento from coopex_cascavel.projeto as a 
-              inner join coopex_usuario.evento_projeto as b on a.id_projeto = b.id_projeto
-              where a.titulo like '%proficiência%' and  a.projeto_periodo_final < CURDATE() ORDER BY a.id_projeto desc limit 1";
+$consulta = "SELECT
+              b.id_evento 
+              FROM
+              coopex_cascavel.projeto AS a
+              INNER JOIN coopex_usuario.evento_projeto AS b ON a.id_projeto = b.id_projeto 
+              WHERE
+              a.titulo LIKE '%proficiência%' 
+              AND a.projeto_periodo_final < CURDATE() 
+              ORDER BY
+              a.id_projeto DESC 
+              LIMIT 1";
 $stm2 = $conexao->prepare($consulta);
 $stm2->execute();
 $result = $stm2->fetchAll(PDO::FETCH_OBJ);
@@ -28,16 +36,16 @@ if ($_FILES['fileUpload']['name'] != NULL) {
 
   foreach ($dados as $linha) {
     // $linha = trim($linha);
-    $valor = explode(',', $linha);
+    $valor = explode(';', $linha);
 
-    print_r($valor);
+    //print_r($valor);
     
 
     if ($valor[0] <> 'CPF') {
       $cpf_antes = $valor[0];
       $cpf = $valor[0];
-      $nome = $valor[1];
-      $linguagem = $valor[2];
+      $nome = ($valor[1]);
+      $linguagem = ($valor[2]);
       $nota = $valor[4];
 
       $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
@@ -52,9 +60,12 @@ if ($_FILES['fileUpload']['name'] != NULL) {
       // print_r($result[0]->id_evento);
       if (!isset($dados[0]->id_certificado)) {
 
-        $texto1 = "Certificamos, para fins de estudos de Mestrado e Doutorado, que <strong> " .  mb_strtoupper(($nome)) . "</strong> foi aprovado(a) no <strong>EXAME DE PROFICIÊNCIA EM LÍNGUA ESTRANGEIRA - " . ($linguagem) . " </strong>, no dia " . utf8_encode(strftime('%d de %B de %Y', strtotime($_POST['data'])))  . ", no Centro Universitário Assis Gurgacz, tendo atingido a nota <strong>" . $nota . "</strong>.";
+        $texto1 = "Certificamos, para fins de estudos de Mestrado e Doutorado, que <strong> " .  mb_strtoupper(($nome)) . "</strong> foi aprovado(a) no <strong>EXAME DE PROFICIÊNCIA EM LÍNGUA ESTRANGEIRA - " . ($linguagem) . "</strong>, no dia " . utf8_encode(strftime('%d de %B de %Y', strtotime($_POST['data'])))  . ", no Centro Universitário Assis Gurgacz, tendo atingido a nota <strong>" . $nota . "</strong>.";
+        
         $texto2 = "EXAME DE PROFICIÊNCIA EM LÍNGUA ESTRANGEIRA -	" . utf8_encode($linguagem);
+
         $sql = "INSERT INTO certificados (texto,tipo,cpf,cadastro_data,titulo,cadastro_usuario) values (:texto1,:texto2,:cpf,:dia,:titulo,:cadastro_usuario)";
+
         $stm = $conexao->prepare($sql);
         $stm->bindValue(':texto1', $texto1);
         $stm->bindValue(':texto2', '7');

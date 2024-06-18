@@ -12,10 +12,20 @@ require_once("conecta.php");
 // $dados = $evento->fetchAll(PDO::FETCH_OBJ);
 
 
-$sql = "select a.id_inscricao, b.nome,b.cpf,b.email,c.tipo,b.senha,a.pago from evento_inscricao as a
-INNER JOIN evento_pessoa as b on a.id_pessoa = b.id_pessoa
-INNER JOIN evento_valores as c on a.id_valor = c.id_valor
-where a.id_evento = :id_evento";
+$sql = "SELECT
+          a.id_inscricao,
+          b.nome,
+          b.cpf,
+          b.email,
+          c.tipo,
+          b.senha,
+          a.pago 
+        FROM
+          evento_inscricao AS a
+        INNER JOIN evento_pessoa AS b ON a.id_pessoa = b.id_pessoa
+        INNER JOIN evento_valores AS c ON a.id_valor = c.id_valor 
+        WHERE
+          a.id_evento = :id_evento";
 
 $inscritos = $conexao->prepare($sql);
 $inscritos->BindValue(':id_evento', $_GET['id']);

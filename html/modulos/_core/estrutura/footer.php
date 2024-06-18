@@ -11,3 +11,30 @@
 		</ul>
 	</div>
 </footer>
+<script>
+	$("#form-ticket").submit(function(e) {
+
+		e.preventDefault();
+
+		var form = $(this);
+
+		if ($.trim($("#tab-ticket-titulo").val()) === "" || $.trim($("#tab-ticket-description").val()) === "") {
+			alert('Alguns campos obrigatórios estão vazios');
+			return false;
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "modulos/coopex/ticket/api/routes/ticket.php",
+			data: form.serialize(),
+			success: function(data) {
+				alert("Ticket cadastrado com sucesso")
+			},
+			error: function(xhr, textStatus, error) {
+				alert("Não foi possível registrar seu ticket")
+				console.log(error)
+				console.log(xhr)
+			}
+		});
+	});
+</script>

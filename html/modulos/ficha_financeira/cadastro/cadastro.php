@@ -75,6 +75,8 @@ if (isset($_GET['id'])) {
   $$chave = 0;
 }
 
+//echo $sql;
+
 //print_r($dados);
 
 ?>
@@ -313,12 +315,14 @@ if (isset($_GET['id'])) {
 														departamento";
                     }
 
+                    //echo $sql;
+
                     $curso = $coopex->query($sql);
                     ?>
 
                     <?php
                     if (isset($_GET['id'])) {
-                      $row = $curso->fetch(PDO::FETCH_OBJ)
+                      $row = $curso->fetch(PDO::FETCH_OBJ);
                     ?>
                       <input type="text" class="form-control" value="<?php echo isset($row->id_departamento) ? utf8_encode($row->departamento) : "" ?>">
                     <?  } else { ?>
@@ -1890,11 +1894,14 @@ if (isset($_GET['id'])) {
 
     valor_desconto = $("#valor_fisio").val();
 
+    $("#valor_mensalidade").html(valor_desconto);
+
     $.getJSON("modulos/ficha_financeira/cadastro/ajax/definir_valor_mensalidade_fisioterapia.php", {
         valor_desconto: valor_desconto
       })
       .done(function(json) {
         if (json) {
+          $("#valor_mensalidade").html("R$ "+json);
           carrega_valor_ficha();
         }
       })

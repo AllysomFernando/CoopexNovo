@@ -1,3 +1,10 @@
+<?php
+$id_menu = 77;
+$isAdmin = $_SESSION['coopex']['usuario']['sistema']['tipo_usuario'] == "ADMINISTRADOR";
+$isPos = $_SESSION['coopex']['usuario']['sistema']['id_tipo_usuario'] == "17";
+$possuiPermissao = isset($_SESSION['coopex']['usuario']['permissao'][$id_menu][1]);
+?>
+
 <link rel="stylesheet" media="screen, print" href="css/formplugins/select2/select2.bundle.css">
 <link rel="stylesheet" media="screen, print" href="css/datagrid/datatables/datatables.bundle.css">
 <link rel="stylesheet" media="screen, print" href="css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css">
@@ -9,7 +16,7 @@
 <?
 require_once('ajax/conecta.php');
 
-$sql = "select b.id_evento from coopex_cascavel.projeto as a 
+$sql = "select b.id_evento from coopex_cascavel.projeto as a
   inner join coopex_usuario.evento_projeto as b on a.id_projeto = b.id_projeto
   where a.titulo like '%proficiência%' and  a.projeto_periodo_final < CURDATE() ORDER BY a.id_projeto desc limit 1";
 $stm = $conexao->prepare($sql);
@@ -28,17 +35,36 @@ $rs = $stm->fetchAll(PDO::FETCH_OBJ);
 </style>
 
 <main id="js-page-content" role="main" class="page-content">
+
+  <!-- <?php if (!$possuiPermissao) { ?>
+    <div class="alert border-danger bg-transparent text-secondary fade show" role="alert">
+      <div class="d-flex align-items-center">
+        <div class="alert-icon">
+          <span class="icon-stack icon-stack-md">
+            <i class="base-7 icon-stack-3x color-danger-900"></i>
+            <i class="fal fa-times icon-stack-1x text-white"></i>
+          </span>
+        </div>
+        <div class="flex-1">
+          <span class="h5 color-danger-900">Este painel está em manutenção e será reativado em breve</span>
+        </div>
+      </div>
+    </div>
+  <?php
+    exit;
+  } ?> -->
+
   <ol class="breadcrumb page-breadcrumb">
     <li class="breadcrumb-item"><a href="javascript:void(0);">Pós Graduação</a></li>
     <li class="breadcrumb-item active">Certificados</li>
 
-    <li class="position-absolute pos-top pos-right d-none d-sm-block"><code>ID: 02</code></li>
+    <li class="position-absolute pos-top pos-right d-none d-sm-block"><code>ID: <?php echo $id_menu ?>c</code></li>
   </ol>
   <div class="subheader">
     <h1 class="subheader-title">
       <i class='subheader-icon fal fa-barcode-read'></i> Gerador de certificados
       <small>
-        Certificados.
+        Gerador de certificados de pós graduação
       </small>
     </h1>
 

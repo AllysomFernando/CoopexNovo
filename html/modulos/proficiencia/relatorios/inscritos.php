@@ -1,6 +1,6 @@
 <?php
 require_once("ajax/conecta.php");
-$sql = "SELECT id_evento FROM evento_projeto where titulo like 'EXAME DE PROFICIÊNCIA%' order by id_evento desc limit 1 ";
+echo $sql = "SELECT id_evento FROM evento_projeto where titulo like '%EXAME DE PROFICIÊNCIA%' order by id_evento desc limit 1 ";
 $evento = $conexao->prepare($sql);
 $evento->execute();
 $dados = $evento->fetchAll(PDO::FETCH_OBJ);

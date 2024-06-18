@@ -42,7 +42,7 @@ if ($_FILES['fileUpload']['name'] != NULL) {
       $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
 
 
-      $texto = 'O Centro Universitário Assis Gurgacz, tendo em vista a conclusão do curso “Lato Sensu” de <strong> ' . utf8_encode($curso) . ' </strong>do Programa de Pós-Graduação, confere o título de especialista a <br><br><strong style="font-size:30px"> ' . utf8_encode($valor[0]) . '</strong><br><br>e outorga-lhe o presente certificado para que possa dispor de seus direitos e prerrogativas legais.';
+      $texto = 'O Centro Universitário Assis Gurgacz, tendo em vista a conclusão do curso "Lato Sensu" de <strong> ' . utf8_encode($curso) . ' </strong>do Programa de Pós-Graduação, confere o título de especialista a <br><br><strong style="font-size:30px"> ' . utf8_encode($valor[0]) . '</strong><br><br>e outorga-lhe o presente certificado para que possa dispor de seus direitos e prerrogativas legais.';
       //      print_r($texto);
       $insert = 'insert into coopex_usuario.certificados(texto,tipo,cpf,cadastro_data,titulo,portaria,curso) values (:texto,9,:cpf,:cadastro_date,:titulo,:portaria,:curso)';
       $stm = $conexao->prepare($insert);

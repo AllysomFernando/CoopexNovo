@@ -20,7 +20,7 @@
 			</small>
 		</h1>
 	</div>
-	<iframe class="d-none" name="dados" src=""></iframe>
+	<iframe class="d-nones" name="dados" src=""></iframe>
 	<form class="needs-validation" novalidate="" method="post" target="dados" action="modulos/financeiro/retorno/bradesco_dados.php" enctype="multipart/form-data">
 		<input type="hidden" name="<?php echo $chave?>" value="<?php echo $$chave ? $$chave : 0?>">
 		<div class="row">

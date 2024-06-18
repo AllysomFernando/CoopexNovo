@@ -15,11 +15,11 @@ $id_periodo = trim(str_replace("/", "", $id_periodo));
 $id_curso = $_GET['id_curso'];
 $_SESSION['ficha_financeira']['id_curso'] = $id_curso;
 
-$_SESSION['ficha_financeira']['carga_horaria']                 = 0;
-$_SESSION['ficha_financeira']['carga_horaria_pacote']             = 0;
-$_SESSION['ficha_financeira']['carga_horaria_disciplinas_pacote']       = 0;
-$_SESSION['ficha_financeira']['carga_horaria_real_disciplinas_pacote']     = 0;
-$_SESSION['ficha_financeira']['carga_horaria_disciplinas_fora_pacote']     = 0;
+$_SESSION['ficha_financeira']['carga_horaria']                 				= 0;
+$_SESSION['ficha_financeira']['carga_horaria_pacote']             			= 0;
+$_SESSION['ficha_financeira']['carga_horaria_disciplinas_pacote']       	= 0;
+$_SESSION['ficha_financeira']['carga_horaria_real_disciplinas_pacote']     	= 0;
+$_SESSION['ficha_financeira']['carga_horaria_disciplinas_fora_pacote']     	= 0;
 $_SESSION['ficha_financeira']['carga_horaria_real_disciplinas_fora_pacote'] = 0;
 $_SESSION['ficha_financeira']['desconto_dp'] = 0;
 
@@ -214,6 +214,7 @@ $sql = "SELECT
 				AND pac_id_pacote = $id_pacote";
 $res = mssql_query($sql);
 
+
 $array = null;
 if (mssql_num_rows($res) > 0) {
   while ($row = mssql_fetch_assoc($res)) {
@@ -307,7 +308,7 @@ if (mssql_num_rows($res) > 0) {
 							eqv_id_atividade_equivalente = $atc_id_atividade 
 							AND crr_id_curriculo = $rcr_id_curriculo";*/
 
-      $res2 = mssql_query($sql3);
+      $res2 = mssql_query($sql);
       $row2 = mssql_fetch_assoc($res2);
 
       $aux['atc_qt_horas']          = trim($row2['atc_qt_horas']);

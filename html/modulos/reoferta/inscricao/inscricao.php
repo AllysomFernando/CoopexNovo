@@ -547,7 +547,7 @@ error_reporting(E_ALL);
 										if(!$pre_matriculado){
 									?>
 									<div class="panel-tag">
-										O valor da pré-matricula é de <strong>R$ 60,00</strong>.<br>
+										O valor da pré-matricula é de <strong>R$ 70,00</strong>.<br>
 										A realização da pré-matricula não garante a matrícula na reoferta, para que seja possível realizar a matrícula devem ser atendidos todos os requisitos descritos no <strong>TERMO DE ACEITE</strong>.
 									</div>
 									<?php

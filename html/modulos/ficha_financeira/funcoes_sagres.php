@@ -31,7 +31,7 @@ function get_aluno($id_pessoa, $id_semestre, $id_curso)
 					INNER JOIN academico..COL_colegiado ON col_id_colegiado = crs_id_unidade
 					INNER JOIN academico..pef_pessoa_fisica ON pef_id_pessoa = pes_id_pessoa
 					INNER JOIN registro..TEL_telefone ON tel_id_pessoa = pes_id_pessoa
-					INNER JOIN academico..PAC_pacote ON pac_id_turma_curso = rca_id_turma_curso 
+					LEFT JOIN academico..PAC_pacote ON pac_id_turma_curso = rca_id_turma_curso 
 				WHERE
 					--pel_id_periodo_letivo = '$id_semestre' 
 					--AND

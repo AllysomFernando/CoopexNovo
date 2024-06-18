@@ -14,10 +14,11 @@
 	//$id_reoferta = 532;
 
 	$sql = "SELECT
-				id_cronograma, data_reoferta, horario_inicio, horario_termino, SEC_TO_TIME(TRUNCATE(TIME_TO_SEC(TIMEDIFF(horario_termino, horario_inicio)) * 1.2, 0)) as horas
+				id_cronograma, data_reoferta, horario_inicio, horario_termino, SEC_TO_TIME(TRUNCATE(TIME_TO_SEC(TIMEDIFF(horario_termino, horario_inicio)) * 1.2, 0)) as horas, atividade as descricao
 			FROM
-				coopex_reoferta.cronograma
-			WHERE id_reoferta = $id_reoferta";
+				proex.cronograma
+			WHERE id_reoferta = $id_reoferta
+			GROUP BY data_reoferta, atividade";
 
 	echo '{"data":[';
 

@@ -65,7 +65,11 @@
 												$tipo = "Reoferta - Pré-matrícula";
 											} else if($row->tipo == "EVTB"){
 												$tipo = "Evento";
-											} 
+											} else if($row->tipo == "BIGJ"){
+												$tipo = "Big Jump - Meias";
+											} else if($row->tipo == "CDTM"){
+												$tipo = "Clube da Tarefa";
+											}
 											
 											$total += $row->total;
 									?>

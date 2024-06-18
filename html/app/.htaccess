@@ -1,0 +1,28 @@
+RewriteEngine on
+DirectoryIndex index.php
+
+RewriteRule ^login$			login.php [L]
+RewriteRule ^home$			index.php?p=home [L]
+RewriteRule ^chat$			index.php?p=chat_home [L]
+RewriteRule ^conversa$		index.php?p=chat [L]
+RewriteRule ^materiais$		index.php?p=materiais [L]
+RewriteRule ^carteirinha$	index.php?p=carteirinha [L]
+RewriteRule ^agenda$		index.php?p=agenda [L]
+RewriteRule ^galeria$		index.php?p=galeria [L]
+RewriteRule ^noticia$		index.php?p=noticia [L]
+RewriteRule ^esportes$		index.php?p=esportes [L]
+RewriteRule ^esportes/modalidade/([0-9]*)$	index.php?p=esportes_modalidade&id=$1 [L]
+RewriteRule ^esportes/modalidade2/([0-9]*)$	index.php?p=esportes_modalidade2&id=$1 [L]
+RewriteRule ^avaliacao$     index.php?p=avaliacao_fisica [L]
+RewriteRule ^tarefa$	    index.php?p=clube_da_tarefa [L]
+RewriteRule ^boletim$	    index.php?p=boletim [L]
+RewriteRule ^atendimento$	index.php?p=atendimento [L]
+RewriteRule ^protocolo$	    index.php?p=atendimento_protocolo [L]
+
+RewriteRule ^horarios$	    index.php?p=horarios [L]
+
+RewriteRule ^acamp$			index.php?p=acamp [L]
+RewriteRule ^loja$			index.php?p=loja [L]
+RewriteRule ^carrinho$		index.php?p=carrinho [L]
+
+RewriteRule ^es$		semana_es.html [L]

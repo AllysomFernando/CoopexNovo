@@ -16,6 +16,7 @@
             INNER JOIN tesouraria.serie using (id_serie) 
             WHERE
                 ativo = 1
+                AND YEAR ( data_retirada ) = 2024    
             AND    
                 id_material = $id_material";
     $material = $coopex->query($sql2);
@@ -52,7 +53,7 @@
                 INNER JOIN academico..IAP_informacoes_aluno_periodo_view ON iap_id_registro_curso = rca_id_registro_curso
                 INNER JOIN academico..SER_serie ON iap_id_serie = ser_id_serie 
             WHERE
-                iap_id_periodo_letivo = 5000000241 
+                iap_id_periodo_letivo = 5000000244 
                 AND ser_id_serie = $id_serie 
                 AND EXISTS (
                 SELECT

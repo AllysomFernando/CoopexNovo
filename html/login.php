@@ -70,20 +70,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       #se o usuário informou o usuário e senha consulta o usuário no banco
       if ($usuario && $senha) {
         $sql = "SELECT
-                  * 
+                  *
                 FROM
-                  integracao..view_integracao_usuario 
+                  integracao..view_integracao_usuario
                 WHERE
                   usuario = '$usuario'
-                
+
                 UNION
-                
+
                 SELECT
-                  * 
+                  *
                 FROM
-                  integracao..view_integracao_usuario_egresso 
+                  integracao..view_integracao_usuario_egresso
                 WHERE
-                  usuario = '$usuario' 
+                  usuario = '$usuario'
                 ORDER BY
                   id_curso DESC;";
 
@@ -119,9 +119,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             #se o usuário não existir no Coopex, insere
             include("php/mysql.php");
             $sql = "SELECT
-										id_pessoa, id_campus 
+										id_pessoa, id_campus
 									FROM
-										pessoa 
+										pessoa
 									WHERE
 										id_pessoa = " . $row['id_pessoa'];
             $pessoa = $coopex->query($sql);
@@ -132,10 +132,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               $coopex->query($sql);
             }
 
-            $sql = "SELECT
+            /*$sql = "SELECT
 										image
 									FROM
-										user_images 
+										user_images
 									WHERE
 										id_user = " . $row['id_pessoa'];
             $avatar = $fagid360->query($sql);
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($avatar->rowCount()) {
               $avatar = $avatar->fetch(PDO::FETCH_OBJ);
               $_SESSION['coopex']['usuario']['sistema']['avatar_fagid'] = $avatar->image;
-            }
+            }*/
 
             menu();
 
@@ -177,13 +177,11 @@ function menu(){
   $id_pessoa = $_SESSION['coopex']['usuario']['id_pessoa'];
 
 
-  $sql = "SELECT
-					* 
-				FROM
-					pessoa a
-					LEFT JOIN departamento b ON a.id_pessoa = b.coordenador 
-				WHERE
-					id_pessoa = $id_pessoa";
+  $sql = "SELECT a.*, b.*, t.tipo_usuario
+  FROM pessoa a
+           LEFT JOIN departamento b ON a.id_pessoa = b.coordenador
+          LEFT JOIN tipo_usuario t ON t.id_tipo_usuario = a.id_tipo_usuario
+  WHERE id_pessoa = $id_pessoa";
   $usuario_coopex = $coopex->query($sql);
   $usuario_coopex = $usuario_coopex->fetch(PDO::FETCH_ASSOC);
   $_SESSION['coopex']['usuario']['sistema'] = $usuario_coopex;
@@ -193,48 +191,48 @@ function menu(){
 					id_menu_grupo,
 					menu_grupo,
 					id_menu_permissao_tipo,
-          menu_grupo.ordem 
+          menu_grupo.ordem
 				FROM
 					coopex.menu_grupo
 					INNER JOIN coopex.menu USING ( id_menu_grupo )
 					INNER JOIN coopex.menu_permissao USING ( id_menu )
 					INNER JOIN coopex.menu_permissao_tipo USING ( id_menu_permissao_tipo )
 					INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-					INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+					INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 				WHERE
-					id_menu_permissao_tipo = 1 
-					AND id_pessoa = $id_pessoa 
+					id_menu_permissao_tipo = 1
+					AND id_pessoa = $id_pessoa
 				GROUP BY
 					id_menu_grupo UNION
 				SELECT
 					id_menu_grupo,
 					menu_grupo,
 					id_menu_permissao_tipo,
-          menu_grupo.ordem  
+          menu_grupo.ordem
 				FROM
 					coopex.menu_grupo
 					INNER JOIN coopex.menu USING ( id_menu_grupo )
 					INNER JOIN coopex.menu_permissao USING ( id_menu )
 					INNER JOIN coopex.menu_permissao_tipo USING ( id_menu_permissao_tipo )
 					INNER JOIN coopex.menu_permissao_usuario USING ( id_menu_permissao )
-					INNER JOIN coopex.pessoa USING ( id_pessoa ) 
+					INNER JOIN coopex.pessoa USING ( id_pessoa )
 				WHERE
-					id_menu_permissao_tipo = 1 
-					AND id_pessoa = $id_pessoa 
+					id_menu_permissao_tipo = 1
+					AND id_pessoa = $id_pessoa
 					AND id_menu_grupo NOT IN (
 					SELECT
-						id_menu_grupo 
+						id_menu_grupo
 					FROM
 						coopex.menu_grupo
 						INNER JOIN coopex.menu USING ( id_menu_grupo )
 						INNER JOIN coopex.menu_permissao USING ( id_menu )
 						INNER JOIN coopex.menu_permissao_tipo USING ( id_menu_permissao_tipo )
 						INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-						INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+						INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 					WHERE
-						id_menu_permissao_tipo = 1 
-						AND id_pessoa = $id_pessoa 
-					) 
+						id_menu_permissao_tipo = 1
+						AND id_pessoa = $id_pessoa
+					)
 				GROUP BY
 					id_menu_grupo
         ORDER BY
@@ -250,25 +248,25 @@ function menu(){
     $_SESSION['coopex']['menu']['grupo'][$id_menu_grupo]['nome'] = $row->menu_grupo;
 
     $sql = "SELECT
-						* 
+						*
 					FROM
-						coopex.menu 
+						coopex.menu
 					WHERE
-						id_menu_grupo = $id_menu_grupo 
-						AND nivel = 1 
+						id_menu_grupo = $id_menu_grupo
+						AND nivel = 1
 						AND (
-							url IS NOT NULL 
+							url IS NOT NULL
 							AND id_menu IN (
 							SELECT
-								id_menu 
+								id_menu
 							FROM
 								coopex.menu
 								INNER JOIN coopex.menu_permissao USING ( id_menu )
 								INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-								INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+								INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 							WHERE
-								id_menu_grupo = $id_menu_grupo 
-								AND id_pessoa = $id_pessoa 
+								id_menu_grupo = $id_menu_grupo
+								AND id_pessoa = $id_pessoa
 								AND nivel = 1
 							UNION
 							SELECT
@@ -284,23 +282,23 @@ function menu(){
 							AND menu_permissao_usuario.id_pessoa = $id_pessoa
 							AND nivel = 1
 							GROUP BY
-								id_menu	 
-							) 
-						) 
+								id_menu
+							)
+						)
 						OR id_menu IN (
 						SELECT
-							pai 
+							pai
 						FROM
 							coopex.menu
 							INNER JOIN coopex.menu_permissao USING ( id_menu )
 							INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-							INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+							INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 						WHERE
-							id_menu_grupo = $id_menu_grupo 
-							AND id_pessoa = $id_pessoa 
-							AND nivel = 2 
+							id_menu_grupo = $id_menu_grupo
+							AND id_pessoa = $id_pessoa
+							AND nivel = 2
 						GROUP BY
-						pai 
+						pai
 						)
 						ORDER BY
 							ordem";
@@ -323,9 +321,9 @@ function menu(){
 							coopex.menu
 							INNER JOIN coopex.menu_permissao USING ( id_menu )
 							INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-							INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+							INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 						WHERE
-							pai = $id_menu_nivel1 
+							pai = $id_menu_nivel1
 							AND id_pessoa = $id_pessoa
 							AND nivel = 2
 						GROUP BY
@@ -338,16 +336,16 @@ function menu(){
 							coopex.menu
 							INNER JOIN coopex.menu_permissao USING ( id_menu )
 							INNER JOIN coopex.menu_permissao_usuario USING ( id_menu_permissao )
-							INNER JOIN coopex.pessoa USING ( id_pessoa ) 
+							INNER JOIN coopex.pessoa USING ( id_pessoa )
 						WHERE
-							pai = $id_menu_nivel1 
-							AND id_pessoa = $id_pessoa 
+							pai = $id_menu_nivel1
+							AND id_pessoa = $id_pessoa
 							AND nivel = 2
 						GROUP BY
 							id_menu";
       $menu_nivel2 = $coopex->query($sql);
 
-      #MENU NIVEL 3	
+      #MENU NIVEL 3
       while ($row_nivel2 = $menu_nivel2->fetch(PDO::FETCH_OBJ)) {
         $id_menu_nivel2 = $row_nivel2->id_menu;
 
@@ -363,9 +361,9 @@ function menu(){
 								coopex.menu
 								INNER JOIN coopex.menu_permissao USING ( id_menu )
 								INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-								INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+								INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 							WHERE
-								pai = $id_menu_nivel2 
+								pai = $id_menu_nivel2
 								AND id_pessoa = $id_pessoa
 								AND nivel = 3
 							GROUP BY
@@ -378,10 +376,10 @@ function menu(){
 								coopex.menu
 								INNER JOIN coopex.menu_permissao USING ( id_menu )
 								INNER JOIN coopex.menu_permissao_usuario USING ( id_menu_permissao )
-								INNER JOIN coopex.pessoa USING ( id_pessoa ) 
+								INNER JOIN coopex.pessoa USING ( id_pessoa )
 							WHERE
-								pai = $id_menu_nivel2 
-								AND id_pessoa = $id_pessoa 
+								pai = $id_menu_nivel2
+								AND id_pessoa = $id_pessoa
 								AND nivel = 3
 							GROUP BY
 								id_menu";
@@ -400,24 +398,24 @@ function menu(){
 
   $sql = "SELECT
 					id_menu,
-					id_menu_permissao_tipo 
+					id_menu_permissao_tipo
 				FROM
 					coopex.menu
 					INNER JOIN coopex.menu_permissao USING ( id_menu )
 					INNER JOIN coopex.menu_permissao_usuario USING ( id_menu_permissao )
-					INNER JOIN coopex.pessoa USING ( id_pessoa ) 
+					INNER JOIN coopex.pessoa USING ( id_pessoa )
 				WHERE
 					id_pessoa = $id_pessoa UNION
 				SELECT
 					id_menu,
-					id_menu_permissao_tipo 
+					id_menu_permissao_tipo
 				FROM
 					coopex.menu
 					INNER JOIN coopex.menu_permissao USING ( id_menu )
 					INNER JOIN coopex.menu_permissao_tipo_usuario USING ( id_menu_permissao )
-					INNER JOIN coopex.pessoa USING ( id_tipo_usuario ) 
+					INNER JOIN coopex.pessoa USING ( id_tipo_usuario )
 				WHERE
-					id_pessoa = $id_pessoa 
+					id_pessoa = $id_pessoa
 				ORDER BY
 					id_menu,
 					id_menu_permissao_tipo";

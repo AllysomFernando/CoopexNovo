@@ -1,0 +1,2 @@
+RewriteEngine on
+LimitRequestBody 933554499999

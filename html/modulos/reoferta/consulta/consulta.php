@@ -1,8 +1,9 @@
 <?php
 	$id_menu = 22;
 
-
-	$campus = $_SESSION['coopex']['usuario']['pessoa']->id_campus ? " and id_campus = ".$_SESSION['coopex']['usuario']['pessoa']->id_campus : "";
+	if($_SESSION['coopex']['usuario']['pessoa']->id_pessoa != 1000011421){
+		$campus = $_SESSION['coopex']['usuario']['pessoa']->id_campus ? " and id_campus = ".$_SESSION['coopex']['usuario']['pessoa']->id_campus : "";
+	}
 
 	#VERIFICA SE O TIPO DE USUÁRIO POSSUI PERMISSÃO PARA ACESSAR TODOS OS REGISTROS
 	if(in_array($_SESSION['coopex']['usuario']['sistema']['id_tipo_usuario'],array(1,2,3,8,9,11,13))){

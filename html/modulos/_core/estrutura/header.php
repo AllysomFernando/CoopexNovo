@@ -53,7 +53,7 @@
 			</a>
 		</div>
 		<!-- app shortcuts -->
-		<div>
+		<div class="d-none">
 			<a href="#" class="header-icon" data-toggle="dropdown" title="My Apps">
 				<i class="fal fa-cube d-none"></i>
 			</a>
@@ -220,12 +220,12 @@
 			</div>
 		</div>
 		<!-- app message -->
-		<a href="#" class="header-icon" data-toggle="modal" data-target=".js-modal-messenger">
+		<a href="#" class="header-icon d-none" data-toggle="modal" data-target=".js-modal-messenger">
 			<i class="fal fa-globe d-none"></i>
 			<span class="badge badge-icon d-none">!</span>
 		</a>
 		<!-- app notification -->
-		<div>
+		<div class="d-none">
 			<a href="#" class="header-icon" data-toggle="dropdown" title="You got 11 notifications">
 				<i class="fal fa-bell d-none"></i>
 				<span class="badge badge-icon d-none">11</span>
@@ -581,17 +581,57 @@
 				</div>
 			</div>
 		</div>
+		<!-- Reportar bug -->
+		<div>
+			<a href="#" class="header-icon cursor-pointer" data-toggle="dropdown" title="Reportar um problema" data-toggle="tab">
+				<i class="fal fa-bug"></i>
+			</a>
+			<div class="dropdown-menu dropdown-menu-animated dropdown-xl">
+				<div class="dropdown-header bg-trans-gradient d-flex justify-content-center align-items-center rounded-top mb-2">
+					<h4 class="m-0 text-center color-white">
+						Ocorreu um problema?
+						<small class="mb-0 opacity-80">Relate aqui seu problema e nós vamos solucionar</small>
+					</h4>
+				</div>
+				<div>
+					<div class="panel-content w-100" id="tab-ticket" role="tabpanel">
+						<div class="tab-pane active p-3 text-center">
+							<form id="form-ticket" action="modulos/coopex/ticket/api/routes/ticket.php" method="post" novalidate class="needs-validation">
+								<input type="text" value="<?php echo "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}" ?>" name="url" id="tab-ticket-url" class="form-control" title="url" hidden>
+								<input type="text" value="<?php echo $_SESSION['coopex']['usuario']['id_pessoa'] ?>" name="id_usuario" id="tab-ticket-user" title="id_usuario" class="form-control" hidden>
+								<div class="form-group text-left">
+									<label for="tab-ticket-titulo" class="form-label">
+										Titulo
+									</label>
+									<input type="text" value="" name="titulo" id="tab-ticket-titulo" class="form-control" required>
+								</div>
+
+								<div class="form-group text-left">
+									<label for="tab-ticket-description" class="form-label">
+										Descrição do problema
+									</label>
+									<textarea name="descricao" id="tab-ticket-description" cols="30" rows="10" class="form-control" placeholder="Descreva seu problema com a maior quantidade de detalhes possíveis..." requried></textarea>
+								</div>
+
+								<button class="btn btn-primary waves-effect waves-themed btn-block" type="submit">Enviar</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- app user menu -->
 		<?php
-			if($_SESSION['coopex']['usuario']['sistema']['avatar']){
-				$imagem = "img/avatars/".$_SESSION['coopex']['usuario']['sistema']['avatar'];
-			} else {
-				$imagem = "img/avatars/avatar-".strtolower($_SESSION['coopex']['usuario']['sexo']).".png";
-			}
+		if ($_SESSION['coopex']['usuario']['sistema']['avatar']) {
+			$imagem = "img/avatars/" . $_SESSION['coopex']['usuario']['sistema']['avatar'];
+		} else {
+			$imagem = "img/avatars/avatar-" . strtolower($_SESSION['coopex']['usuario']['sexo']) . ".png";
+		}
 		?>
 		<div>
-			<a href="#" data-toggle="dropdown" title="<?php echo $_SESSION['coopex']['usuario']['email']?>" class="header-icon d-flex align-items-center justify-content-center ml-2">
-				<img src="<?php echo $imagem?>" class="profile-image rounded-circle" alt="<?php echo $_SESSION['coopex']['usuario']['nome']?>">
+			<a href="#" data-toggle="dropdown" title="<?php echo $_SESSION['coopex']['usuario']['email'] ?>" class="header-icon d-flex align-items-center justify-content-center ml-2">
+				<img src="<?php echo $imagem ?>" class="profile-image rounded-circle" alt="<?php echo $_SESSION['coopex']['usuario']['nome'] ?>">
 				<!-- you can also add username next to the avatar with the codes below:
 				<span class="ml-1 mr-1 text-truncate text-truncate-header hidden-xs-down">Me</span>
 				<i class="ni ni-chevron-down hidden-xs-down"></i> -->
@@ -600,11 +640,11 @@
 				<div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
 					<div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
 						<span class="mr-2">
-							<img src="img/demo/avatars/avatar-<?php echo strtolower($_SESSION['coopex']['usuario']['sexo'])?>.png" class="rounded-circle profile-image" alt="<?php echo $_SESSION['coopex']['usuario']['primeiro_nome']?>">
+							<img src="img/demo/avatars/avatar-<?php echo strtolower($_SESSION['coopex']['usuario']['sexo']) ?>.png" class="rounded-circle profile-image" alt="<?php echo $_SESSION['coopex']['usuario']['primeiro_nome'] ?>">
 						</span>
 						<div class="info-card-text">
-							<div class="fs-lg text-truncate text-truncate-lg"><?php echo $_SESSION['coopex']['usuario']['primeiro_nome']?></div>
-							<span class="text-truncate text-truncate-md opacity-80"><?php echo $_SESSION['coopex']['usuario']['tipo_usuario']?></span>
+							<div class="fs-lg text-truncate text-truncate-lg"><?php echo $_SESSION['coopex']['usuario']['primeiro_nome'] ?></div>
+							<span class="text-truncate text-truncate-md opacity-80"><?php echo $_SESSION['coopex']['usuario']['tipo_usuario'] ?></span>
 						</div>
 					</div>
 				</div>
@@ -624,7 +664,7 @@
 					<span data-i18n="drpdwn.print">Imprimir</span>
 					<i class="float-right text-muted fw-n">Ctrl + P</i>
 				</a>
-				
+
 
 				<div class="dropdown-multilevel dropdown-multilevel-left d-none">
 					<div class="dropdown-item">
@@ -639,14 +679,14 @@
 					</div>
 				</div>
 				<div class="dropdown-divider m-0"></div>
-				
+
 				<a class="dropdown-item fw-500 pt-3 pb-3 d-none" href="bloqueio">
 					<span data-i18n="drpdwn.print">Bloquear</span>
 				</a>
 				<div class="dropdown-divider m-0"></div>
 				<a class="dropdown-item fw-500 pt-3 pb-3" href="logout">
 					<span data-i18n="drpdwn.page-logout">Logout</span>
-					<span class="float-right fw-n"><?php echo $_SESSION['coopex']['usuario']['usuario']?></span>
+					<span class="float-right fw-n"><?php echo $_SESSION['coopex']['usuario']['usuario'] ?></span>
 				</a>
 			</div>
 		</div>

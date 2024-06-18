@@ -25,13 +25,14 @@
 			</div>
 		</div>
 		<?php
+			//echo utf8_encode($_SESSION['coopex']['usuario']['pessoa']['tipo_usuario']);
 			if($_SESSION['coopex']['usuario']['sistema']['avatar']){
 				$imagem = "img/avatars/".$_SESSION['coopex']['usuario']['sistema']['avatar'];
 			} else {
 				$imagem = "img/avatars/avatar-".strtolower($_SESSION['coopex']['usuario']['sexo']).".png";
 			}
 			$pronome = $_SESSION['coopex']['usuario']['sexo'] == "M" ? "" : "a";
-			$tratamento = $_SESSION['coopex']['usuario']['sistema']['graduacao'] ? "Coordenador$pronome" : $_SESSION['coopex']['usuario']['tipo_usuario'];
+			$tratamento =  $_SESSION['coopex']['usuario']['tipo_usuario'];
 		?>
 		<div class="info-card">
 			<img src="<?php echo $imagem?>" class="profile-image rounded-circle" alt="<?php echo $_SESSION['coopex']['usuario']['nome']?>">
@@ -49,6 +50,14 @@
 			</a>
 		</div>
 		<ul id="js-nav-menu" class="nav-menu">
+			<?
+				if($_SESSION['coopex']['usuario']['id_curso'] == 1000000391){
+
+			?>
+				
+			<?
+				}
+			?>	
 			<?php
 				//GRUPO
 				foreach($_SESSION['coopex']['menu']['grupo'] as $grupo){

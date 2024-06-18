@@ -23,7 +23,7 @@
 			FROM
 				academico..PEL_periodo_letivo
 			WHERE
-				pel_id_periodo_letivo = 5000000197 or pel_id_periodo_letivo = 5000000198 or pel_id_periodo_letivo = 5000000200
+				pel_id_periodo_letivo = 5000000197 or pel_id_periodo_letivo = 5000000198 or pel_id_periodo_letivo = 5000000203
 			ORDER BY
 				pel_ds_historico asc";	
 				

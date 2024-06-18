@@ -2,11 +2,30 @@
 
 	$id_menu = 70;
 
+	if(isset($_GET['id'])){
+		$ano = $_GET['id'];
+	} else {
+		$sql = "SELECT
+					ano 
+				FROM
+					tesouraria.material 
+				GROUP BY
+					ano 
+				ORDER BY
+					ano DESC
+				LIMIT 1";
+		$res = $coopex->query($sql);
+		$row = $res->fetch(PDO::FETCH_OBJ);
+		$ano = $row->ano;
+	}
+
 	$sql = "SELECT
 				*, date(data_saida) AS data
 			FROM
 				tesouraria.saida
 			INNER JOIN tesouraria.material USING (id_material)
+			WHERE
+				ano = $ano
 			ORDER BY
 				data_saida DESC";
 
@@ -49,6 +68,70 @@
 			}
 		?>
 	</div>
+	<div class="row">
+			<div class="col-xl-12">
+			  	<div id="panel-2" class="panel">
+				  	<div class="panel-hdr">
+						<h2>
+							Ano
+						</h2>
+						<div class="panel-toolbar">
+							<button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+							<button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+						</div>
+					</div>
+
+					<script type="text/javascript">
+						function selecionar_semestre(){
+							var ano = $("#ano").val();
+							window.location.href = "https://coopex.fag.edu.br/tesouraria/colegio/devolucao/consulta/"+ano;
+						}
+					</script>
+
+					<div class="panel-container show">
+
+						<div class="panel-content p-0">
+							<div class="panel-content">
+								<div class="form-row">
+									<div class="col-md-3 mb-3">
+										<label class="form-label" for="validationCustom03">Selecione o Ano</label>
+										<?php
+											$sql = "SELECT
+														ano 
+													FROM
+														tesouraria.material 
+													GROUP BY
+														ano 
+													ORDER BY
+														ano DESC";
+											$periodo = $coopex->query($sql);
+										?>
+										<select onchange="selecionar_semestre()" id="ano" class="select2 form-control" required="">
+										<?php
+											while($row = $periodo->fetch(PDO::FETCH_OBJ)){
+												$selecionado = '';
+												if($ano == $row->ano){
+													$selecionado = 'selected=""';
+												}
+										?>	
+											<option <?= $selecionado?>  value="<?php echo $row->ano?>"><?php echo $row->ano?> </option>
+										<?php
+											}
+										?>	
+										</select>
+										<div class="invalid-feedback">
+											Selecione o período da reoferta
+										</div>
+									</div>
+								</div>	
+									
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="row">
 		<div class="col-xl-12">
 			<div id="panel-1" class="panel">
@@ -105,10 +188,13 @@
 		</div>
 	</div>
 </main>
-
+<link rel="stylesheet" media="screen, print" href="css/formplugins/select2/select2.bundle.css">
+		<script src="js/formplugins/select2/select2.bundle.js"></script>
         <script src="js/datagrid/datatables/datatables.bundle.js"></script>
         <script>
+			
             $(document).ready(function(){
+				$('.select2').select2();
                 $('#dt-basic-example').dataTable({
                     responsive: true,
 					"aaSorting": []
@@ -126,6 +212,7 @@
 					}
 				});
 			}
+
 			function exclusaoFalha(){
 				Swal.fire({
 					type: "error",
@@ -133,6 +220,7 @@
 					showConfirmButton: true
 				});
 			}
+
         </script>
     </body>
 </html>

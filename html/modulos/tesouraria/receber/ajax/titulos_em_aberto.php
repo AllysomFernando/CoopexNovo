@@ -6,6 +6,9 @@
 	$id_pessoa = $_GET['id_usuario'];
 	
 	//selecionas os boletos das matrículas
+?>
+
+<?	
 	$sql = "SELECT
 				* 
 			FROM
@@ -15,12 +18,7 @@
 			WHERE
 				m.id_pessoa = $id_pessoa";
 	$matricula = $coopex->query($sql);
-			
 
-
-	//print_r($matricula);
-
-	//seleciona os boletos das pré-matriículas
 	$sql = "SELECT
 				* 
 			FROM
@@ -35,11 +33,6 @@
 
 	if($matricula->rowCount() > 0 || $prematricula->rowCount() > 0){
 ?>
-<style>
-	table tr td{
-		vertical-align: middle !important;
-	}
-</style>
 
 <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline">
 	<thead class="bg-primary-600">
