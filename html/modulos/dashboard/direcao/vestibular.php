@@ -74,10 +74,10 @@ $sql = "SELECT
 		WHERE
 			pagamento = 1
 		AND
-			id_ensino_medio = 3";
+			(id_ensino_medio = 2 or id_ensino_medio = 3)";
 $res = $coopex_antigo->query($sql);
 $row = $res->fetch(PDO::FETCH_OBJ);
-$inscritos_confirmados_treineiros = $row->total;
+echo $inscritos_confirmados_treineiros = $row->total;
 
 //INSCRITOS CONFIRMADOS TREINEIROS
 $sql = "SELECT
@@ -88,7 +88,7 @@ $sql = "SELECT
 		WHERE
 			pagamento = 1
 		AND
-			id_ensino_medio <> 3";
+			(id_ensino_medio = 1 or id_ensino_medio = 4)";
 $res = $coopex_antigo->query($sql);
 $row = $res->fetch(PDO::FETCH_OBJ);
 $inscritos_confirmados_nao_treineiros = $row->total;
@@ -102,7 +102,7 @@ $sql = "SELECT
 		WHERE
 			pagamento = 0
 		AND
-			id_ensino_medio = 3";
+			(id_ensino_medio = 2 or id_ensino_medio = 3)";
 $res = $coopex_antigo->query($sql);
 $row = $res->fetch(PDO::FETCH_OBJ);
 $inscritos_nao_confirmados_treineiros = $row->total;
@@ -116,7 +116,7 @@ $sql = "SELECT
 			WHERE
 				pagamento = 0
 			AND
-				id_ensino_medio <> 3";
+				(id_ensino_medio = 1 or id_ensino_medio = 4)";
 $res = $coopex_antigo->query($sql);
 $row = $res->fetch(PDO::FETCH_OBJ);
 $inscritos_nao_confirmados_nao_treineiros = $row->total;

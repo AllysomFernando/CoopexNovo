@@ -66,13 +66,13 @@ if ($isAdmin) {
 						</div>
 						<?php if (count($tickets) > 0) { ?>
 							<!--  -->
-							<div id="ticket-contacts" class="d-flex align-items-center justify-content-flex-start flex-wrap">
+							<div id="ticket-contacts" class="row">
 								<?php
 								foreach ($tickets as $ticket) {
 									$badge = getTicketPanelBadge($ticket->status)
 								?>
-									<div class="col-xl-4 w-100 h-300">
-										<div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="<?php echo strtolower($ticket->titulo) . ' ' .  strtolower($badge->message)?>">
+									<div class="col-sm-6 mb-g" style="height: 300px;">
+										<div id="c_1" class="card border shadow-0 shadow-sm-hover h-100" data-filter-tags="<?php echo strtolower($ticket->titulo) . ' ' .  strtolower($badge->message) ?>">
 											<div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
 												<div class="d-flex flex-row align-items-center flex-nowrap">
 													<div class="info-card-text flex-1 w-100 d-flex flex-row align-items-center flex-nowrap">
@@ -90,13 +90,13 @@ if ($isAdmin) {
 											</div>
 											<div class="card-body p-0 collapse show">
 												<div class="p-3">
-													<p><?php echo $ticket->descricao ?></p>
-													<div class="d-flex flex-row">
-														<a href="coopex/ticket/atendimento/<?php echo $ticket->id ?>" class="btn btn-icon btn-primary w-100" title="Atendimento">
-															<i class="fal fa-comment-alt"></i> Atendimento
-														</a>
-													</div>
+													<p class="flex-grow h-100 flex-1"><?php echo $ticket->descricao ?></p>
 												</div>
+											</div>
+											<div class="card-footer d-flex flex-row">
+												<a href="coopex/ticket/atendimento/<?php echo $ticket->id ?>" class="btn btn-icon btn-primary w-100" title="Atendimento">
+													<i class="fal fa-comment-alt"></i> Atendimento
+												</a>
 											</div>
 										</div>
 									</div>
